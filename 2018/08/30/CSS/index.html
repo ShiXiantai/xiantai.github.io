@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>WEB前端CSS | 脑洞星球</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="WEB前端CSS： WEB前端">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB前端CSS">
+<meta property="og:url" content="http://yoursite.com/2018/08/30/CSS/index.html">
+<meta property="og:site_name" content="脑洞星球">
+<meta property="og:description" content="WEB前端CSS： WEB前端">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-20T06:06:54.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WEB前端CSS">
+<meta name="twitter:description" content="WEB前端CSS： WEB前端">
+  
+    <link rel="alternative" href="/atom.xml" title="脑洞星球" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xiantaii Shi</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="../../../../archives/">所有文章</a></li>
+                        
+                            <li><a  href="../../../../categories/tool/">开发工具</a></li>
+                        
+                            <li><a  href="../../../../categories/front-end/">前端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/after-end/">后端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/algorithm/">硬件学习</a></li>
+                        
+                            <li><a  href="../../../../categories/assist/">辅助软件</a></li>
+                        
+                            <li><a  href="../../../../categories/servicer/">服务器</a></li>
+                        
+                            <li><a  href="../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="../../../../xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="../../../../xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="../../../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../../../tags/Excel/" style="font-size: 10px;">Excel</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/HTTP状态码说明/" style="font-size: 10px;">HTTP状态码说明</a> <a href="../../../../tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="../../../../tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="../../../../tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="../../../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../../../tags/WEB/" style="font-size: 10px;">WEB</a> <a href="../../../../tags/WebStrom/" style="font-size: 10px;">WebStrom</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/sxiantai">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xiantaii Shi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xiantaii Shi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../categories/tool/">开发工具</a></li>
+                
+                    <li><a href="../../../../categories/front-end/">前端学习</a></li>
+                
+                    <li><a href="../../../../categories/after-end/">后端学习</a></li>
+                
+                    <li><a href="../../../../categories/algorithm/">硬件学习</a></li>
+                
+                    <li><a href="../../../../categories/assist/">辅助软件</a></li>
+                
+                    <li><a href="../../../../categories/servicer/">服务器</a></li>
+                
+                    <li><a href="../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="../../../../xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="../../../../xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-CSS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="" class="article-date">
+      <time datetime="2018-08-30T14:35:37.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WEB前端CSS
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="../../../../categories/front-end/">front-end</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/CSS/">CSS</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> WEB前端CSS：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>WEB前端<br><a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
+<p>###CSS</p>
+<ul>
+<li>美化页面的技术</li>
+<li>Cascading 层叠 Style 样式 Sheet 表 ： 层叠样式表，CSS用于美化html页面，html可以理解成盖房子，CSS相当于装修</li>
+</ul>
+<p>###CSS的引入方式</p>
+<ol>
+<li><p>内联样式：在标签内部通过 style属性添加样式，弊端：只能作用于一个元素，不能复用，几乎不使用</p>
+<pre><code>&lt;div style=&quot;color: red;border: 1px solid green;&quot;&gt;我是一个div&lt;/div&gt;
+&lt;span style=&quot;color: purple;border: 1px solid pink&quot;&gt;我是一个span&lt;/span&gt;
+</code></pre></li>
+<li><p>内部样式：在head标签内部通过 style子标签添加样式，好处：可以在本页面内复用样式，弊端：不能多个页面复用同一样式 ，工作中此种方式用的不多，但是学习的时候使用内部样式，主要是方便演示</p>
+</li>
+</ol>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+    /* 标签名选择器 */
+    h3{
+        color: blue;
+        border: 2px solid yellow;
+    }
+&lt;/style&gt;
+</code></pre><ol start="3">
+<li><p>外部样式：样式代码写在单独的*.css文件中，通过link标签引入到某个html页面中，好处：样式可以复用在多个页面中</p>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;demo01.css&quot;&gt;
+css文件：
+@charset &quot;UTF-8&quot;;
+
+p{
+    color: red;
+    background-color: green;
+}
+</code></pre></li>
+</ol>
+<p>###三种引入方式的优先级</p>
+<ul>
+<li>如果三种引入方式作用的样式不同则全部生效</li>
+<li>如果三种引入方式作用的样式相同则按照下面的优先级规则来决定到底哪个生效</li>
+</ul>
+<ol>
+<li>内联优先级最高</li>
+<li>内部和外部 后执行会覆盖先执行的</li>
+</ol>
+<p>###CSS的选择器</p>
+<p>####基础选择器</p>
+<ol>
+<li>标签名选择器  </li>
+</ol>
+<ul>
+<li>应用场景：当需要对页面中所有的某一种标签设置相同效果的时候<pre><code>标签名{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre></li>
+</ul>
+<ol start="2">
+<li>id选择器</li>
+</ol>
+<ul>
+<li>通过标签的id属性找到对应的标签</li>
+<li><p>应用场景：当需要对页面中的某一个元素设置样式的时候使用</p>
+<pre><code>#标签id{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre></li>
+</ul>
+<ol start="3">
+<li>类选择器</li>
+</ol>
+<ul>
+<li>通过标签的class属性找到对应的标签</li>
+<li><p>应用场景：当需要对页面中的多个元素设置样式的时候使用</p>
+<pre><code>.class{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre><p>####其它各种选择器</p>
+</li>
+</ul>
+<ol>
+<li>属性选择器</li>
+</ol>
+<ul>
+<li><p>通过标签内部指定属性查找对应的标签</p>
+<pre><code>标签名[属性名=&quot;属性值&quot;]{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre></li>
+</ul>
+<ol start="2">
+<li>派生选择器(后代选择器)</li>
+</ol>
+<ul>
+<li><p>通过多个标签之间的上下级关系查找子元素和孙子元素和。。。。所有后代元素</p>
+<pre><code>基础选择器 基础选择器 基础选择器{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre></li>
+</ul>
+<ol start="3">
+<li>子元素选择器</li>
+</ol>
+<ul>
+<li><p>通过多个标签之间的上下级关系查找子元素。</p>
+<pre><code>基础选择器&gt;基础选择器&gt;基础选择器{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre></li>
+</ul>
+<ol start="4">
+<li>分组选择器</li>
+</ol>
+<ul>
+<li>分组选择器可以把多种选择器通过逗号连接到一起，给多个选择器设置相同的样式<pre><code>h3,p,.d1,#abc,#bcd{
+    color:red;
+}
+</code></pre></li>
+</ul>
+<ol start="5">
+<li>伪类选择器</li>
+</ol>
+<ul>
+<li>用于选择元素的状态</li>
+</ul>
+<ol>
+<li>visited：访问过的状态</li>
+<li>link：未点击状态</li>
+<li>hover：鼠标悬停状态</li>
+<li>active：鼠标点击时的状态</li>
+</ol>
+<ul>
+<li>使用方式：<pre><code>    /* 访问过的状态 */
+    a:visited {
+    color: red;
+}
+    /* 未点击状态 */
+    a:link {
+    color: yellow;
+}
+    /* 鼠标悬停状态 */
+    a:hover {
+    color: blue;
+}
+    /* 鼠标点击时的状态 */
+    a:active {
+    color: pink;
+}
+</code></pre></li>
+</ul>
+<ol start="6">
+<li>任意元素选择器</li>
+</ol>
+<ul>
+<li><p>如果需要给页面中所有的元素设置相同的样式可以使用此选择器</p>
+<pre><code>*{
+    样式名称:值;
+    样式名称:值;
+}
+</code></pre></li>
+</ul>
+<p>####如果多个选择器设置相同样式的效果时，作用范围越小优先级越高</p>
+<p>###CSS中常用的属性</p>
+<ul>
+<li>已经接触的属性 color（字体颜色）background-color(背景颜色) border（边框）</li>
+</ul>
+<h4 id="元素的宽高："><a href="#元素的宽高：" class="headerlink" title="元素的宽高："></a>元素的宽高：</h4><ol>
+<li>块级元素的默认高度为内容高度，默认宽度为父元素的宽度</li>
+<li>行内元素的默认宽高为内容的宽高</li>
+</ol>
+<ul>
+<li><p>只能修改块级元素的宽高，不能修改行内元素的宽高<br>####设置元素的颜色</p>
+<pre><code>/*1. 通过颜色名称赋值 red yellow green
+ blue pink purple white black orange gray*/
+/*2. 6位16进制赋值 每两位表示一个颜色 红 绿 蓝   */
+/* background-color: #ff00ff; */
+/*3. 3位16进制赋值 每一位表示一个颜色  */
+/* background-color: #00f; */
+/*4. 通过3位 10进制赋值 每个取值0-255  */
+/* background-color:rgb(255,255,0); */
+/*5. 4位10进制赋值 第四位代表透明度取值0-1 */
+background-color: rgba(0,255,0,0.5);
+</code></pre><p>####设置元素的背景图片</p>
+<pre><code>/* 设置背景图片 */
+background-image: url(&quot;../imgs/a.jpg&quot;);
+/* 设置背景图片的大小 参数为宽和高  */ 
+background-size: 100px 100px;
+/* 设置背景图片不重复 */
+background-repeat: no-repeat;
+/* 设置背景图片的位置 left center right top bottom 
+第一个参数代表水平 第二个参数代表垂直*/
+/* background-position: right center; */
+/* 通过百分比控制位置 */
+background-position:90% 90%;
+</code></pre></li>
+</ul>
+<p>###盒子模型</p>
+<p>####外边距</p>
+<ul>
+<li>元素距离父元素或相邻兄弟元素的距离称为外边距</li>
+<li><p>赋值方式：</p>
+<pre><code>/* margin: 40px; 四个外边距都是40px */
+/* margin: 20px 50px; 上下20 左右50 */
+/* margin: 0 auto; 水平居中 */
+margin: 10px 30px 60px 90px;/* 顺时针 上右下左 */
+</code></pre></li>
+<li>块级元素：上下左右都生效</li>
+<li>行内元素：只有左右生效 上下不生效</li>
+<li>外边距粘连问题： 当元素的上边缘和父元素的上边缘重合的时候，子元素的上外边距会带着父元素一起移动，通过在父元素中添加 overflow:hidden;解决。</li>
+<li>上下外边距取最大值，左右外边距相加<br>####边框<br>  border: 粗细(像素值) 边框的样式(solid) 颜色<br>  /<em> border: 10px inset purple; </em>/<pre><code>border-bottom:5px solid yellow;
+border-left:5px solid pink;
+border-top:5px solid green;
+border-right:5px solid black;
+border-radius:55px;/*圆角 值越大越园  */
+</code></pre></li>
+<li>块级元素： 上下左右边框全部生效，而且边框都会占显示区域</li>
+<li>行内元素： 上下左右边框全部生效，但是只有左右边框才会占显示区域，上下不占显示区域（不会增加元素自身的高度）</li>
+</ul>
+<p>####内边距</p>
+<ul>
+<li>内容距离边框的距离    </li>
+<li>给元素添加内边距会影响元素的宽高</li>
+<li>移动元素内的子元素几种方式？ 两种：1. 给大的添加内边距（大的所占宽高会跟着改变） 2. 给小的添加外边距</li>
+<li>移动元素内的文本的时候几种？ 一种：只能给大的添加内边距。</li>
+<li>块级元素：内边距四个方向都生效，而且都会影响元素的显示范围</li>
+<li>行内元素：内边距四个方向都生效，左右影响显示范围，上下不影响显示范围</li>
+</ul>
+<p>####块级元素和行内元素关于盒子模型的总结</p>
+<ol>
+<li>块级元素：可以设置宽高，外边距全部生效 并且影响元素的所占宽高, 边框四个方向都生效，并且影响元素的所占宽高，内边距全部生效，并且影响元素所占的宽高</li>
+<li>行内元素：不可以设置宽高，外边距左右生效，上下不生效，边框都生效，上下不影响所占高度，内边距都有效果，左右影响所占宽度 上下不影响所占高度<br>###元素所占宽度计算公式<br>宽高为100*200 左外边距10 右外30  边框5px 左内8px 右内2px</li>
+</ol>
+<p>100+10+30+5*2+8+2<br>左外边距+左边框+左内边距+元素宽度+右内边距+右边框+右外边距</p>
+<p>###文本相关的属性</p>
+<pre><code>/* 文本相关属性 */
+/* 文本水平对齐方式 center/left/right */
+text-align: center;
+/* 文本修饰  none 没有 
+underline 下划线
+overline 上划线
+line-through 删除线*/
+text-decoration: line-through;
+/* 文本颜色 */
+color: red;
+/* 行高  通常让文本垂直居中的时候使用行高 */ 
+line-height: 100px;
+/* 文本阴影   4个参数
+1. 阴影颜色 
+2和3是阴影的偏移值  
+4. 阴影的模糊度 值越小越清晰 0是不模糊*/
+text-shadow: #0f0 -15px 15px 1px;
+</code></pre><p>####字体相关属性</p>
+<pre><code>/* 字体相关属性 */
+font-size: 20px;
+/* 字体粗细属性  normal 不加粗
+    bold 加粗
+    lighter 比普通细一些
+ */
+font-weight: lighter;
+/* 字体样式  可以设置多个值通过逗号分隔，以此检测
+哪个生效用哪个 */
+font-family: &quot;楷体&quot;;
+/* 设置斜体 */
+font-style: italic;
+</code></pre><p>###溢出设置 </p>
+<ul>
+<li><p>指子元素显示范围超出父元素范围时的设置</p>
+<pre><code>/* visible(默认 超出显示)
+hidden: 超出不显示
+scroll:超出滚动显示  */
+overflow: hidden;
+</code></pre><p>###元素显示方式</p>
+</li>
+<li>block： 块级元素默认的显示方式，独占一行，可以修改宽高</li>
+<li>inline：行内元素的默认显示方式，共占一行，不可以修改宽高</li>
+<li>inline-block:行内块，共占一行 并且可以修改宽高</li>
+</ul>
+<p>###元素的定位</p>
+<p>####position定位</p>
+<p>#####静态定位（文档流定位）（默认）</p>
+<ul>
+<li>元素如果是块级元素则默认从上到下排列，如果是行内元素则从左向右排列</li>
+<li>设置方式： position:static;<br>#####相对定位</li>
+<li>相对于元素初始的位置，通过left/right/top/bottom让元素做位置的偏移</li>
+<li>元素不会脱离文档流</li>
+<li>场景：当元素需要从当前位置做位置偏移的时候，并且不希望其它元素跟着移动时使用此定位<br>#####绝对定位</li>
+<li>会脱离文档流 后面有元素的话会顶上来</li>
+<li>left/right/top/bottom 做位置偏移，相对于谁？ 1. 相对于窗口(没有祖宗或有祖宗但是没有做非static定位) 2. 相对于祖宗元素(有祖宗并且有某个祖宗做了非static定位，如果都做了，则就近原则)（如果仅仅是为了给子元素做位置的参考一般都使用relative）</li>
+<li>场景：当元素需要相对于某个祖先元素或窗口做位置偏移的时候，并且不再占用原来的位置时使用此定位方式<br>#####固定定位</li>
+<li>固定在窗口的某个位置，不会随着内容位置改变而改变</li>
+<li>脱离文档流，left/right/top/bottom 坐标相对于窗口<br>####浮动定位</li>
+<li>元素脱离文档流，元素在当前所在行内 左侧或右侧浮动，当撞到父元素边框或浮起来的兄弟元素边缘的时候</li>
+<li>如果所有浮动的元素一行装不下会自动换行，但是如果有凸出的元素会有卡住的效果</li>
+<li>如果元素浮动则后面的元素会往上顶(因为浮动会脱离文档流)，如果不希望后面的元素往上移动，则需要在后面紧邻的元素上添加clear属性设置both/left/right,禁止元素 两边/左/右 有浮动的元素。</li>
+<li>如果元素的所有子元素全部浮动，并且元素没有设置高度，此时自动识别的高度为0，可以通过添加 overflow:hidden; 让元素能够识别出浮动后子元素的高度</li>
+<li>应用场景：当多个纵向排列的元素需要改成横向排列的时候 使用浮动定位</li>
+<li>练习： demo08.html 页面中添加一个无序列表把列表项改成横向排列<br>####行内元素的垂直对齐方式</li>
+<li>默认对齐方式为基线对齐 vertical-align：baseline</li>
+<li>top/middle/bottom</li>
+</ul>
+<p>###CSS的三大特性</p>
+<ol>
+<li>继承性：子元素可以继承父元素的部分属性，只能继承color/font-开头/text-文本相关/line- 此类型的属性，不仅仅子元素继承所有的后代元素都会继承</li>
+</ol>
+<ul>
+<li>如果元素自身所带的样式和继承的冲突则以自身所带样式为准，如：h标签的字体大小，超链接的文本颜色和文本下划线</li>
+</ul>
+<ol start="2">
+<li>层叠性：通过不同的选择器可以多次指向同一个元素，如果设置的样式不同则全部生效，如果多个选择器设置的样式相同，则根据CSS的第三特性优先级来决定</li>
+<li>优先级：</li>
+</ol>
+<ul>
+<li>直接选中优先级高于间接选中(继承属于间接选中)</li>
+<li>如果相同选择器，则后执行的覆盖前面的</li>
+<li>不同选择器，作用范围越小 优先级越高    id&gt;class&gt;标签名&gt;继承<br>###CSS定位<br>####Position</li>
+<li>position：static，静态定位（文档流定位）， 从上到下 从左向右</li>
+<li>relative，相对定位：不脱离文档流，上右下左相对于元素初始位置</li>
+<li>absolute，绝对定位：脱离文档流，相对于窗口或祖先元素</li>
+<li>fixed，固定定位：脱离文档流，相对于窗口，固定在窗口的某个位置<br>####浮动定位<br>float:left/right; 元素会在当前所在行内左侧或右侧浮动</li>
+<li>脱离文档流</li>
+<li>如果后面的元素不想顶上去 添加 clear:left/right/both</li>
+<li>如果元素所有子元素全部浮动的话 内容高度识别为0 通过添加overflow：hidden解决</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="">WEB前端CSS</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Xiantaii Shi 的个人博客">Xiantaii Shi</a></p>
+        <p><span>发布时间:</span>2018年08月30日 - 22时35分</p>
+        <p><span>最后更新:</span>2018年09月20日 - 14时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="WEB前端CSS">http://yoursite.com/2018/08/30/CSS/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/30/CSS/　　作者: Xiantaii Shi" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="../HTML/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          WEB前端HTML
+        
+      </div>
+    </a>
+  
+  
+    <a  href="../../../../2017/10/30/WebStrom快捷键/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WebStrom快捷键</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#元素的宽高："><span class="toc-number">1.</span> <span class="toc-text">元素的宽高：</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="../HTML/" title="上一篇: WEB前端HTML">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="../../../../2017/10/30/WebStrom快捷键/" title="下一篇: WebStrom快捷键">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../09/20/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../JavaScript/">WEB前端JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="../JQuery/">WEB前端JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../web01/">WEB前端(一)</a></li><li class="post-list-item"><a class="post-list-link" href="../HTML/">WEB前端HTML</a></li><li class="post-list-item"><a class="post-list-link" href="">WEB前端CSS</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/WebStrom快捷键/">WebStrom快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Linux查看系统配置常用命令/">Linux查看系统配置常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/HTTP状态码说明/">HTTP状态码说明</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Intellij IDEA 快捷键整理/">IDEA快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/excel/">Excel</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Xiantaii Shi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="../../../../js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

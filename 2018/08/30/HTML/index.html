@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>WEB前端HTML | 脑洞星球</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="WEB前端HTML： WEB前端">
+<meta name="keywords" content="HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB前端HTML">
+<meta property="og:url" content="http://yoursite.com/2018/08/30/HTML/index.html">
+<meta property="og:site_name" content="脑洞星球">
+<meta property="og:description" content="WEB前端HTML： WEB前端">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-20T06:06:53.259Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WEB前端HTML">
+<meta name="twitter:description" content="WEB前端HTML： WEB前端">
+  
+    <link rel="alternative" href="/atom.xml" title="脑洞星球" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xiantaii Shi</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="../../../../archives/">所有文章</a></li>
+                        
+                            <li><a  href="../../../../categories/tool/">开发工具</a></li>
+                        
+                            <li><a  href="../../../../categories/front-end/">前端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/after-end/">后端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/algorithm/">硬件学习</a></li>
+                        
+                            <li><a  href="../../../../categories/assist/">辅助软件</a></li>
+                        
+                            <li><a  href="../../../../categories/servicer/">服务器</a></li>
+                        
+                            <li><a  href="../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="../../../../xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="../../../../xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="../../../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../../../tags/Excel/" style="font-size: 10px;">Excel</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/HTTP状态码说明/" style="font-size: 10px;">HTTP状态码说明</a> <a href="../../../../tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="../../../../tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="../../../../tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="../../../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../../../tags/WEB/" style="font-size: 10px;">WEB</a> <a href="../../../../tags/WebStrom/" style="font-size: 10px;">WebStrom</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/sxiantai">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xiantaii Shi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xiantaii Shi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../categories/tool/">开发工具</a></li>
+                
+                    <li><a href="../../../../categories/front-end/">前端学习</a></li>
+                
+                    <li><a href="../../../../categories/after-end/">后端学习</a></li>
+                
+                    <li><a href="../../../../categories/algorithm/">硬件学习</a></li>
+                
+                    <li><a href="../../../../categories/assist/">辅助软件</a></li>
+                
+                    <li><a href="../../../../categories/servicer/">服务器</a></li>
+                
+                    <li><a href="../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="../../../../xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="../../../../xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-HTML" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="" class="article-date">
+      <time datetime="2018-08-30T14:35:37.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WEB前端HTML
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="../../../../categories/front-end/">front-end</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/HTML/">HTML</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> WEB前端HTML：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>WEB前端<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+
+<p>###HTML<br>    Hyper Text Markup Language：超文本标记语言 </p>
+<ul>
+<li>什么是超文本：不仅仅是文本，还包括文本的字体颜色，样式 还包括多媒体（图片，音频，视频）</li>
+<li>html学习内容： 学习有哪些固定的标签，还有标签内部有哪些属性和标签和标签之间的嵌套关系</li>
+</ul>
+<p>###通过Eclipse创建html文件 </p>
+<ul>
+<li>新建文件-&gt; other-&gt;搜索html </li>
+</ul>
+<p>###html结构</p>
+<pre><code>&lt;!DOCTYPE html&gt;   //文档声明 告诉浏览器使用html的哪个版本来解析页面内容 ，此写法是告诉浏览器用最新的html5的版本解析 
+&lt;html&gt;//所有内容都在html标签内部 除了 文档声明
+    &lt;head&gt;//头 ：里面的内容是给浏览器看的 比如使用什么编码 
+    &lt;/head&gt;
+    &lt;body&gt;//体 ：里面的内容是给用户看的 
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>####head里面的标签</p>
+<pre><code>&lt;meta charset=&quot;UTF-8&quot;&gt;：告诉浏览器使用哪种字符集解析
+
+&lt;title&gt;Insert title here&lt;/title&gt; 告诉浏览器 页面标题是什么，title还可以起到优化SEO的作用（让搜索引擎尽快搜索到此页面）
+ keywords的作用：让搜索引擎尽快的找到本页面
+</code></pre><p>###Body内部的标签</p>
+<p>####文本标签</p>
+<pre><code>1. &lt;h1&gt;&lt;/h1&gt;.......&lt;h6&gt;&lt;/h6&gt; 内容标题
+- align：left/center/right  水平对齐方式
+2. &lt;p&gt;&lt;/p&gt;    段落标签 ，每个段落标签独占一行并且上下会留有空白区域
+3. &lt;hr&gt; 水平分割线
+4. &lt;br&gt; 换行
+</code></pre><p>####列表标签</p>
+<ol>
+<li><p>无序列表：</p>
+<pre><code>&lt;ul type=&quot;circle&quot;&gt; &lt;!-- u:unordered 无序 l:list 列表 --&gt;
+    &lt;li&gt;刘备&lt;/li&gt;&lt;!--l:list列表 i:item 项  --&gt;
+    &lt;li&gt;貂蝉&lt;/li&gt;
+    &lt;li&gt;孙尚香&lt;/li&gt;
+    &lt;li&gt;孙悟空&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre></li>
+<li><p>有序列表</p>
+<pre><code>&lt;ol&gt;
+    &lt;li&gt;打开冰箱门&lt;/li&gt; 
+    &lt;li&gt;把大象装进去&lt;/li&gt;
+    &lt;li&gt;关上冰箱门&lt;/li&gt;
+    &lt;li&gt;啦啦啦&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre></li>
+</ol>
+<ul>
+<li>常见属性： type 控制每个列表项前面的表示的（a A i I 1默认） start 列表数值的起始值  reversed 倒序</li>
+</ul>
+<ol start="3">
+<li><p>定义列表</p>
+<pre><code>&lt;h3&gt;定义列表&lt;/h3&gt;
+&lt;dl&gt;&lt;!-- defined list 定义一个列表 --&gt;
+    &lt;dt&gt;凉菜&lt;/dt&gt;&lt;!--defined title 定义标题 --&gt;
+    &lt;dd&gt;老醋花生&lt;/dd&gt;&lt;!--defined data 定义数据  --&gt;
+    &lt;dd&gt;花毛一体&lt;/dd&gt;
+    &lt;dd&gt;大拌菜&lt;/dd&gt;
+    &lt;dt&gt;炒菜&lt;/dt&gt;
+    &lt;dd&gt;宫保鸡丁&lt;/dd&gt;
+    &lt;dd&gt;小炒肉&lt;/dd&gt;
+    &lt;dd&gt;木须肉&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre></li>
+<li><p>列表嵌套</p>
+</li>
+</ol>
+<ul>
+<li>有序和无序列表可以任意嵌套多层</li>
+</ul>
+<p>###分区标签（元素） div和span </p>
+<ul>
+<li>对页面进行分区有两大好处：</li>
+</ul>
+<ol>
+<li>可以多个页面复用同一个区域的内容</li>
+<li>可以对整个区域的内容进行统一管理</li>
+</ol>
+<ul>
+<li>分区元素本身没有显示效果，起到容器的作用</li>
+<li>div： 块级分区 独占一行 </li>
+<li>span： 行内分区 和多个行内分区元素 共占一行 </li>
+<li><p>通常一个页面会分为三大区域</p>
+<pre><code>&lt;body&gt;
+    &lt;div&gt;头部区域&lt;/div&gt;
+    &lt;div&gt;正文区域&lt;/div&gt;
+    &lt;div&gt;尾/脚部区域&lt;/div&gt;
+&lt;/body&gt;
+</code></pre></li>
+<li>在html5中提出了几个分区元素 效果和div一样，但是代码可读性增强了<pre><code>&lt;body&gt;
+    &lt;header&gt;头部区域&lt;/header&gt;
+    &lt;article&gt;正文区域&lt;/article&gt;
+    &lt;footer&gt;脚部区域&lt;/footer&gt;
+&lt;/body&gt;
+</code></pre>####元素的分类</li>
+<li>块级元素：独占一行<br>  包括： h1-h6, p,div,hr</li>
+<li>行内元素：和多个行内元素共占一行<br>  包括：span, <i></i>和 <em></em>（斜体）<b></b>和<strong></strong>(粗体)  <u></u>下划线   <s></s>和<del></del>删除线<br>####行内元素空格折叠现象</li>
+<li>行内元素中空格如果有多个只能识别一个空格<br>####需要转义的常见特殊字符 实体引用</li>
+<li>空格： &nbsp;</li>
+<li>&lt; : &lt;</li>
+<li><blockquote>
+<p>: &gt;</p>
+</blockquote>
+</li>
+<li>换行：<br></li>
+</ul>
+<p>###图片元素</p>
+<ul>
+<li><img>属于单标签</li>
+<li>常见属性：</li>
+</ul>
+<ol>
+<li>alt：当图片不能正常显示的时候显示此文本</li>
+<li>src：写图片的路径，路径分为两种：</li>
+</ol>
+<ul>
+<li>绝对路径：以http开头的路径，此路径可以指向本网站也可以指向其它网站(盗链，盗链图片如果原网站图片发生改变则不能正常显示)</li>
+<li>相对路径：相对于当前页面html文件 1. 图片和页面文件在同一个文件夹下，直接写文件名，2. 图片在页面文件的上一层文件夹 ../文件名  3. 在页面文件的下一层文件夹  文件夹名/文件夹名/文件名</li>
+<li>路径总结： 如果是站内资源使用相对路径，站外资源使用绝对路径</li>
+<li>图床：专门存放图片的网站，使用图床可以节省本站空间</li>
+</ul>
+<ol start="3">
+<li>title:图片标题 当鼠标悬停在图片上面的时候显示</li>
+<li>width：设置图片的宽度，两种方式：像素和百分比，如果只设置宽度 高度会保证宽高比的情况下自动跟着宽度改变</li>
+<li>height: 设置图片的高度，两种方式：像素和百分比。</li>
+</ol>
+<ul>
+<li>img支持的图片格式： jpg  png  gif</li>
+</ul>
+<p>####Map 图像地图</p>
+<ul>
+<li>什么是图像地图： 可以将图片的某个区域作为可点击的链接</li>
+<li><p>使用方式：</p>
+<pre><code>&lt;!-- usemap:使用地图 #代表当前页面 --&gt;
+&lt;img alt=&quot;&quot; src=&quot;../imgs/b.jpg&quot; usemap=&quot;#mymap&quot;&gt;
+&lt;!-- 为了保证兼容性问题 把name和id都写上  --&gt;
+&lt;map name=&quot;mymap&quot; id=&quot;mymap&quot;&gt;
+    &lt;!-- area区域  shape形状 rect矩形 coords坐标--&gt;
+    &lt;area shape=&quot;rect&quot; coords=&quot;0,0,200,200&quot; 
+            href=&quot;../imgs/2.gif&quot;&gt;
+    &lt;area shape=&quot;circle&quot; coords=&quot;663,473,90&quot;
+         href=&quot;../imgs/d.jpg&quot;&gt;
+&lt;/map&gt;
+</code></pre></li>
+<li>map中的id和name作用是让图片能够找得到此地图</li>
+<li>area常见属性： shape表示形状 常用有circle和rect</li>
+<li>href：值为一个路径，可以写相对路径和绝对路径，路径可以指向页面，也可以指向文件（浏览器可以打开的文件直接浏览，不能打开的文件则下载）</li>
+</ul>
+<p>###超链接 a标签</p>
+<ul>
+<li>如果a标签没有添加href属性 就相当于一个文本不是超链接</li>
+<li>href属性和图像地图中的href作用一样</li>
+<li>target=”_blank” 开启一个新的页面</li>
+<li>锚点用法： 需要先创建锚点:<a id="a" name="a"></a>, 然后通过a标签跳转到锚点的位置：<a href="#a">跳转到锚点</a></li>
+<li>img标签放在a标签内部 则图片就可以被点击了<br>###练习：1号美女  2号美女   3号美女    4号帅哥</li>
+</ul>
+<p>###表格 table</p>
+<ul>
+<li>接触标签有 table tr td</li>
+<li>table的属性：align水平对齐 width宽度 border边框 cellspacing边框和单元格的距离 cellpadding内容和单元格的距离 </li>
+<li>td的属性：colspan跨列  rowspan跨行 align水平对齐</li>
+<li>caption标签</li>
+<li>分组标签：<thead> <tbody> <tfoot>  没有任何显示效果，提高代码可读性</tfoot></tbody></thead></li>
+</ul>
+<p>###表单</p>
+<ul>
+<li>表单的作用是收集用户的数据提交到服务端</li>
+<li><p>表单中的控件包括： 文本框、密码框、按钮、下拉列表、单选、复选、时间选择、文件选择、文本域<br>####文本框 </p>
+<pre><code>&lt;input type=&quot;text&quot; placeholder=&quot;占位文本&quot; maxlength=&quot;最大字符长度&quot; readonly=&quot;只读&quot; &gt;
+</code></pre><p>####密码框</p>
+<pre><code>&lt;input type=&quot;password&quot; maxlength&gt;
+</code></pre></li>
+</ul>
+<p>####单选</p>
+<pre><code>&lt;input type=&quot;radio&quot; checked默认选中&gt;
+</code></pre><p>####多选、复选框</p>
+<pre><code>&lt;input type=&quot;checkbox&quot; id=&quot;aaa&quot;&gt;  &lt;label for=&quot;aaa&quot;&gt;xxx&lt;/label&gt;
+</code></pre><p>####时间</p>
+<pre><code>&lt;input type=&quot;date&quot; &gt;
+</code></pre><p>####文件</p>
+<pre><code>&lt;input type=&quot;file&quot; &gt;
+</code></pre><p>####下拉选</p>
+<pre><code>&lt;select name&gt;
+        &lt;option value selected&gt;&lt;/option&gt;
+&lt;select&gt;
+</code></pre><p>####文本域 </p>
+<pre><code>&lt;textarea rows=&quot;行数&quot; cols=&quot;列数&quot;&gt;&lt;/textarea&gt;
+</code></pre><p>####隐藏域</p>
+<pre><code>&lt;input type=&quot;hidden&quot;&gt;
+</code></pre><p>####按钮</p>
+<pre><code>&lt;input type=&quot;submit/reset/button&quot; value=&quot;按钮标题&quot;&gt;
+</code></pre><p>####代码</p>
+<ol>
+<li><p>图像地图Map  </p>
+<pre><code>&lt;img usemap=&quot;#mymap&quot;&gt;
+&lt;map name=&quot;mymap&quot; id=&quot;mymap&quot;&gt;
+&lt;area shape=&quot;rect/circle&quot; coords=&quot;&quot; href=&quot;&quot;&gt;&lt;/area&gt;
+&lt;/map&gt;
+</code></pre></li>
+<li><p>超链接 a</p>
+<pre><code>&lt;a href=&quot;&quot; target=&quot;_blank&quot;&gt;超链接&lt;/a&gt;
+&lt;a id name &gt;&lt;/a&gt;   &lt;a href=&quot;#id/name&quot;&gt;跳转&lt;/a&gt;
+</code></pre></li>
+<li><p>表格 </p>
+<pre><code>&lt;table border cellspacing cellpadding width align&gt;
+&lt;tr&gt;行
+&lt;td rowspan  colspan align&gt;列
+&lt;th&gt;表头
+&lt;thead&gt; &lt;tbody&gt; &lt;tfoot&gt;  
+&lt;caption&gt; 表的标题
+</code></pre></li>
+<li><p>表单  文本框 密码框 单选 多选  文件 日期  隐藏域 按钮 下拉选 文本域</p>
+<pre><code>&lt;input type=&quot;text/password/radio/checkbox/file/date/hidden/submit/reset/button&quot; name value id checked placeholder readonly maxlength&gt;
+&lt;label for=&quot;id&quot;&gt;
+&lt;select name&gt;&lt;option value selected&gt;
+&lt;textarea rows   cols &gt;
+</code></pre></li>
+</ol>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="">WEB前端HTML</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Xiantaii Shi 的个人博客">Xiantaii Shi</a></p>
+        <p><span>发布时间:</span>2018年08月30日 - 22时35分</p>
+        <p><span>最后更新:</span>2018年09月20日 - 14时06分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="WEB前端HTML">http://yoursite.com/2018/08/30/HTML/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2018/08/30/HTML/　　作者: Xiantaii Shi" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="../web01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          WEB前端(一)
+        
+      </div>
+    </a>
+  
+  
+    <a  href="../CSS/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WEB前端CSS</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="../web01/" title="上一篇: WEB前端(一)">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="../CSS/" title="下一篇: WEB前端CSS">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../09/20/hello-world/">Hello World</a></li><li class="post-list-item"><a class="post-list-link" href="../JavaScript/">WEB前端JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="../JQuery/">WEB前端JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../web01/">WEB前端(一)</a></li><li class="post-list-item"><a class="post-list-link" href="">WEB前端HTML</a></li><li class="post-list-item"><a class="post-list-link" href="../CSS/">WEB前端CSS</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/WebStrom快捷键/">WebStrom快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Linux查看系统配置常用命令/">Linux查看系统配置常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/HTTP状态码说明/">HTTP状态码说明</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Intellij IDEA 快捷键整理/">IDEA快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/excel/">Excel</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Xiantaii Shi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="../../../../js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
