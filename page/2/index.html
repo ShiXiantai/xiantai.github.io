@@ -319,263 +319,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Java基础：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""></the></p>
-<blockquote>
-<p><strong>Java开发环境:</strong></p>
-</blockquote>
-<p><em>1)java编译运行过程:————-常见面试题</em></p>
-<pre><code>1.1)编译期:.java源文件，经过编译，生成.class字节码文件
-1.2)运行期:JVM加载.class并运行.class
-    特点:跨平台、一次编程到处使用
-</code></pre><p>  <em>2)名词解释:————-常见面试题</em></p>
-<pre><code>2.1)JVM:java虚拟机
-        加载.class并运行.class
-2.2)JRE:java运行环境
-        除了包含JVM以外还包含了运行java程序所必须的环境
-    JRE=JVM+java系统类库(小零件)
-2.3)JDK:java开发工具包
-        除了包含JRE以外还包含了开发java程序所必须的命令工具
-    JDK=JRE+编译、运行等命令工具
-说明:
-  2.1)运行java程序的最小环境为JRE
-  2.2)开发java程序的最小环境为JDK
-</code></pre><p>  <em>3)配置环境变量—————了解</em></p>
-<pre><code>3.1)JAVA_HOME:指向jdk的安装路径
-3.2)CLASSPATH:表示类的搜索路径(一般简写为.)
-3.3)PATH:指向jdk下的bin目录
-</code></pre><blockquote>
-<p><strong>eclipse:</strong></p>
-</blockquote>
-<pre><code>1)IBM、开源的、免费的、不需要安装仅需解压即可
-2)开发步骤:
-  2.1)新建Java项目/工程---------------小区
-  2.2)新建Java包----------------------楼+单元
-  2.3)新建Java类----------------------房子
-        main中:
-      System.out.println(&quot;HelloWorld&quot;);
-3)注释:解释性文字
-  3.1)单行注释://
-  3.2)多行注释:/* */
-  3.3)文档注释:/** */
-</code></pre><blockquote>
-<p><strong>变量:存数的，代词，指代的就是它所存的那个数</strong></p>
-</blockquote>
-<pre><code>1)声明:
-    int a; //声明一个整型的变量，名为a
-    int b,c,d; //声明三个整型的变量，名为b,c,d
-2)初始化:第一次赋值
-  2.1)声明的同时初始化:
-        int a = 250; //声明整型变量a并赋值为250
-  2.2)先声明后初始化:
-        int a;   //声明整型变量a
-         a = 250; //给变量a赋值为250
-3)使用:
-  3.1)对变量的使用就是对它所存的那个数的使用
-        int a = 5;
-        int b = a+10; //取出a的值5，加10后，再赋值给整型变量b
-        System.out.println(b);   //输出变量b的值15
-        System.out.println(&quot;b&quot;); //输出b，双引号中的原样输出
-        a = a+10; //取出a的值5，加10后，再赋值给a
-                  //在a本身基础之上增10
-        System.out.println(a); //15
-  3.2)变量在使用时必须类型匹配
-        int a = 3.14; //编译错误，数据类型不匹配
-  3.3)变量在用之前必须声明并初始化
-        System.out.println(m); //编译错误，m未声明
-         int m;
-         System.out.println(m); //编译错误，m未初始化
-4)命名:
-  4.1)只能包含字母、数字、_和$符，并且不能以数字开头
-  4.2)严格区分大小写
-  4.3)不能使用关键字
-  4.4)可以中文命名，但不建议
-      建议&quot;英文的见名知意&quot;、&quot;驼峰命名法&quot;
-</code></pre><blockquote>
-<p><strong>基本数据类型:共8种</strong></p>
-</blockquote>
-<pre><code>1)int:整型，4个字节，-21个多亿到21个多亿
-      1.1)整数直接量默认为int型，但不能超范围，超范围则编译错误
-      1.2)两个整数相除，结果还是整数，小数位无条件舍弃(不会四舍五入)
-      1.3)运算时超范围，则发生溢出，溢出是需要避免的
-2)long:长整型，8个字节，很大很大很大
-      2.1)表示长整型直接量，需在数字后加L或l
-      2.2)运算时若有可能溢出，建议在第1个数字后加L
-      2.3)System.currentTimeMillis()用于获取自
-          1970.1.1零时到此时此刻的毫秒数
-3)double:浮点型，8个字节，
-      3.1)浮点数直接量默认为double型，若想表示float需在数字后加f或F
-      3.2)double和float在运算时，有可能会出现舍入误差(精确运算场合不能使用)
-4)boolean:布尔型，1个字节
-        4.1)只能取值为true和false
-5)char:字符型，2个字节
-      5.1)采用Unicode字符集编码，一个字符对应一个码(0到65535之间)
-          表现的形式的字符char，但本质上是码int
-      ASCII码(&apos;a&apos;--97  &apos;A&apos;--65  &apos;0&apos;--48)
-      5.2)字符直接量必须放在单引号中，只能有一个
-      5.3)特殊符号需通过\来转义
-</code></pre><blockquote>
-<p><strong>基本数据类型间的转换:</strong></p>
-</blockquote>
-<pre><code>数据类型从小到大依次为:
-  byte,short,int,long,float,double,char,
-
-  1)两种方式:
-    1.1)自动类型转换:小类型到大类型
-    1.2)强制类型转换:大类型到小类型
-          eg: (要转换成为的数据类型)变量
-      强转有可能溢出或丢失精度
-  2)两点规则:
-    2.1)整数直接量可以直接赋值给byte,short,char，但不能超出范围
-    2.2)byte,short,char型数据参与运算时，先一律转换为int再运算
-</code></pre><blockquote>
-<p><strong>Scanner接收用户的输入:</strong></p>
-</blockquote>
-<pre><code>1)在package下:
-    import java.util.Scanner;
-2)在main()中:
-    Scanner scan = new Scanner(System.in);
-3)在第2步之下:
-    System.out.println(&quot;请输入年龄:&quot;);
-    int age = scan.nextInt();
-    System.out.println(&quot;请输入价格:&quot;);
-    double price = scan.nextDouble();
-</code></pre><blockquote>
-<p><strong>运算符:</strong></p>
-</blockquote>
-<pre><code>1)算术运算符:+,-,*,/,%,++,--
-2)关系运算符:&gt;,&lt;,&gt;=,&lt;=,==,!= boolean
-3)逻辑运算符:&amp;&amp;,||,! boolean
-4)赋值运算符:=,+=,-=,*=,/=,%=
-5)字符串连接运算符:+
-6)条件/三目运算符:boolean?数1:数2
-</code></pre><blockquote>
-<p><strong>分支结构:</strong></p>
-</blockquote>
-<pre><code>1)if结构:1条路
-2)if...else结构:2条路
-3)if...else if结构:多条路
-4)switch...case结构:多条路
-  优点:效率高、结构清晰
-  缺点:整数、相等
-  break:跳出switch
-</code></pre><blockquote>
-<p><strong>循环:</strong></p>
-</blockquote>
-<pre><code>反复执行一段相同或相似的代码
-</code></pre><blockquote>
-<p><strong>循环三要素:</strong></p>
-</blockquote>
-<pre><code>1)循环变量的初始化
-2)循环的条件(以循环变量为基础)
-3)循环变量的改变(向着循环的结束变)
-循环变量:在整个循环过程中所反复改变的那个数
-</code></pre><blockquote>
-<p><strong>循环结构:</strong></p>
-</blockquote>
-<pre><code>1)while结构:先判断后执行，有可能一次都不执行
-2)do...while结构:先执行后判断，至少执行一次
-                 要素1与要素3相同时，首选do...while
-3)for结构:应用率最高，固定次数循环
-</code></pre><blockquote>
-<p><strong>break:跳出循环</strong></p>
-</blockquote>
-<pre><code>continue:跳过循环体中剩余语句而进入下一次循环
-</code></pre><blockquote>
-<p><strong>三种循环结构的更佳适用情况:</strong></p>
-</blockquote>
-<pre><code>1)while:&quot;当...&quot;
-        要素1与要素3不同时首选while
-2)do...while:&quot;直到...&quot;
-        要素1与要素3相同时首选do...while
-3)for:固定次数循环，应用率最高
-</code></pre><blockquote>
-<p><strong>嵌套循环:</strong></p>
-</blockquote>
-<pre><code>1)循环中套循环，一般多行多列时使用，外层控制行，内层控制列
-2)执行规则:外层循环走一次，内层循环走所有次
-3)建议:嵌套层数越少越好，能用一层就不用两层，能用两层就不用三层
-  若需求必须要使用三层以上的循环才能解决，说明设计有问题
-4)break只能跳出一层循环
-</code></pre><blockquote>
-<p><strong>程序=算法+数据结构————了解</strong></p>
-</blockquote>
-<pre><code>1)算法:解决问题的流程/步骤(顺序、分支、循环)
-2)数据结构:将数据按照某种特定的结构来保存
-           数怎么存
-  设计良好的/合理的数据结构会导致好的算法
-</code></pre><blockquote>
-<p><strong>数组:</strong></p>
-</blockquote>
-<pre><code>1)是一种数据类型(引用类型)
-2)相同数据类型元素的集合
-3)数组的定义:
-    int[] arr = new int[10];
-4)数组的初始化:
-        int[] arr = new int[3]; //0,0,0
-        int[] arr = {2,5,8}; //2,5,8
-        int[] arr = new int[]{2,5,8}; //2,5,8
-        int[] arr;
-        arr = {2,5,8}; //编译错误，此方式只能声明同时初始化
-          arr = new int[]{2,5,8}; //正确
-5)数组的访问:
-  5.1)通过数组名.length可以获取数组的长度(元素的个数)
-        int[] arr = new int[10];
-          System.out.println(arr.length); //10
-  5.2)通过数组的下标/索引来访问元素
-      下标从0开始，最大到(数组的长度-1)
-        int[] arr = new int[3];
-        arr[0] = 100; //给arr中第1个元素赋值为100
-        arr[1] = 200; //给arr中第2个元素赋值为200
-        arr[2] = 300; //给arr中第3个元素赋值为300
-        arr[3] = 400; //数组下标越界异常
-        System.out.println(arr[arr.length-1]); //输出最后一个元素的值
-6)数组的遍历:
-        int[] arr = new int[10];
-        for(int i=0;i&lt;arr.length;i++){
-          arr[i] = 100;
-        }
-        for(int i=0;i&lt;arr.length;i++){
-          System.out.println(arr[i]);
-        }
-        for(int i=arr.length-1;i&gt;=0;i--){
-          System.out.println(arr[i]);
-        }
-7)数组的复制:
-      7.1)System.arraycopy(a,1,a1,0,4); //效率高、灵活性好
-      7.2)int[] a1 = Arrays.copyOf(a,6); //效率低、灵活性差
-          a = Arrays.copyOf(a,a.length+1); //数组的扩容/缩容
-8)数组的排序:
-      8.1)Arrays.sort(arr); //升序，效率高
-      8.2)冒泡排序:----车轮战
-          8.2.1)四个数冒三轮
-      8.2.2)每一轮都是从第1个元素开始冒
-            每一次都是和它的下一个元素比
-      8.2.3)冒出来的就不再参与比较了
-</code></pre><blockquote>
-<p><strong>方法:</strong></p>
-</blockquote>
-<pre><code>1)封装一段特定的业务逻辑功能
-2)尽可能独立，一个方法只干一件事
-3)可以被反复多次调用
-4)减少代码的重复，有利于代码的维护，有利于团队的协作
-</code></pre><blockquote>
-<p><strong>方法的定义:</strong></p>
-</blockquote>
-<pre><code>修饰词 返回值类型 方法名(参数列表){ //形参
-  方法体
-}
-</code></pre><blockquote>
-<p><strong>方法的调用:</strong></p>
-</blockquote>
-<pre><code>1)无返回值: 方法名(有参传参); //实参
-2)有返回值: 数据类型 变量 = 方法名(有参传参);
-</code></pre><blockquote>
-<p><strong>return:</strong></p>
-</blockquote>
-<pre><code>1)return 值; //1.1)结束方法的执行 1.2)返回结果给调用方
-2)return;    //2.1)结束方法的执行(在某种条件之下提前结束方法)
-</code></pre>
+              <p><strong> Java基础：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>
+          
       
     </div>
     
@@ -592,6 +337,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/基础/">基础</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="../../2018/06/23/Java基础Basic/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -640,91 +389,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Spring框架部分：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
-
-<p>一、    你用过spring框架吗？</p>
-<pre><code>a)    用过，spring框架是轻量级，代码侵入性低,可集成，用来简化web开发的应用开发的框架。 
-</code></pre><p>二、    Spring容器是什么？</p>
-<pre><code>a)    是Spring框架当中的一个核心模块，用于对对象进行管理。
-</code></pre><p>三、    什么是IOC什么是DI？DI如何实现的？</p>
-<pre><code>a)    IOC叫控制反转，是Inversion of Control 的缩写。
-所谓的“控制反转”就是对组件对象控制权的转移，从程序代码本身转移到了外部容器，由容器来创建对象并管理对象之间的依赖关系。
-b)    DI 叫依赖注入，是Dependency Control的缩写，是对IOC更简单的诠释。
-</code></pre><p>四、    Spring中的Bean的作用域有哪些？</p>
-<pre><code>a)    两个作用域
-    1.    Singleton: 表示Bean以单例的形式存在。一般情况下，无状态或状态不可变的类适合单例模式。
-    2.    Prototype:    表示每次从容器中调用Bean时，都会返回一个新的实例。
-</code></pre><p>五、    请你阐述下SpringMVC分为几大组件？SpringMVC的执行流程（也就是这五大组件的关系）</p>
-<pre><code>a)    五大组件：
-    1.    dispatcherServlet     (前端控制器)
-    2.    handlerMapping        （前端控制器秘书）
-    3.    controller            （处理器）
-    4.    ViewResolver        （视图解析器）
-    5.    ModelAndView        （模型和视图）
-b)    dispatcherServlet前段控制器收到请求之后，依据HandlerMapping的配置调用相应的Controller来处理
-controller将处理结果封装成ModeAndView发送给前段控制器DispatcherServlet
-dispatcherServlet前端控制器会依据ViewResolver的配置调用相应的配置，调用相应的视图对象（比如JSP）
-来展现数据
-</code></pre><p>六、    你了解Java反射机制吗？Java中哪些地方用到了反射？</p>
-<pre><code>a)    就是在运动状态中，对于任意一个类，都能够知道这个类的所有属性和方法，对于任意一个对象，
-都能够调用它的任意一个方法和属性；这种动态获取信息以及动态调用对象的方法的功能称为反射。
-b)    Spring框架底层就是通过反射实现的。
-</code></pre><p>七、    什么是MyBatis框架？</p>
-<pre><code>a)    作用就是封装了JDBC,简化了数据库的访问代码。
-</code></pre><p>八、    MyBatis中的Mapper映射器要满足那些要求？</p>
-<pre><code>a)    Mapper.xml的
-    1.    Namespace        ==     接口名
-    2.    sql语句id        ==    方法名
-    3.    parameterType    ==  方法参数类型
-    4.    resultType        ==    返回值类型
-</code></pre><p>九、    解释一下什么叫AOP Aspect Oriented Programming（面向切面编程）？</p>
-<pre><code>a)    AOP可以对业务逻辑的各个部分进行隔离，也就是可以降低业务逻辑各部分的耦合度，提高程序的可重用性，提高开发效率。
-b)    主要的功能有5点（或更多）：
-    1.    日志记录
-    2.    性能统计
-    3.    安全控制
-    4.    事务处理
-    5.    异常处理
-</code></pre><p>十、    AOP和OOP有什么区别？</p>
-<pre><code>a)    AOP、OOP在字面上虽然非常类似，但却是面向不同领域的两种设计思想。
-b)    OOP（面向对象编程）针对业务处理过程的实体及其属性和行为进行抽象封装，以获得更加清晰高效的逻辑单元划分。
-c)    而AOP则是针对业务处理过程中的切面进行提取，它所面对的是处理过程中的某个步骤或阶段，以获得逻辑过程中各部分之间低耦合性的隔离效果。
-d)    总之，AOP可以通过预编译方式和运行期动态代理实现在不修改源代码的情况下给程序动态统一添加功能的一种技术。
-</code></pre><p>十一、    什么是AJAX?</p>
-<pre><code>a)    ajax是一种用来改善用户体验的技术，也就是局部刷新，其本质是利用浏览器内部的一个对象(XMLHttpRequest)异步的向服务器发送请求。
-</code></pre><p>十二、    ajax对象的几个重要的属性？</p>
-<pre><code>a)    5个
-    1.    Onreadystatechange:        用来绑定事件处理函数的
-    2.    Readystate：            有5个值（0,1,2,3,4）表示对ajax对象与服务通信的状态（进展）
-    3.    responseText：            获得服务器返回的文本
-    4.    responseXML：            获得服务器返回的xml文档
-    5.    status：                获得服务器返回的状态码（200/202/400/404/500）
-</code></pre><p>十三、    AJAX都有哪些优点和缺点</p>
-<pre><code>优点:
-1.    最大的一点是页面无刷新，用户的体验非常好。
-2.    使用异步方式与服务器通信，具有更加迅速的响应能力。
-3.    可以把以前一些服务器负担的工作转嫁到客户端，利用客户端闲置的能力来处理，减轻服务器和带宽的负担，节约空间和宽带租用成本。并且减轻服务器的负担，ajax的原则是“按需取数据”，可以最大程度的减少冗余请求，和响应对服务器造成的负担。
-4.    基于标准化的并被广泛支持的技术，不需要下载插件或者小程序。
-ajax的缺点:
-6.    ajax不支持浏览器back按钮。
-7.    安全问题 AJAX暴露了与服务器交互的细节。
-8.    对搜索引擎的支持比较弱。
-9.    破坏了程序的异常机制。
-10.    不容易调试
-</code></pre><p>十四、    JSON是什么？语法是怎么样的？</p>
-<pre><code>a)    是一种轻量级的数据交换模式，比xml要小，解析速度更加快。
-b)    使用JSON表示一个对象{“属性名”：属性值，“属性名”：属性值};
-</code></pre><p>十五、    面向对象和面向过程有什么区别？</p>
-<pre><code>a)    面向过程是一种以过程为中心的编程思想。就是分析出解决问题所需要的步骤，然后用函数把这些步骤一步一步的实现，使用的时候一个一个依次调用就可以了。注重的是过程。
-b)    面向对象是一种以事务为中心的编程思想。面向对象的方法主要是把事务给对象化，对象包括属性和行为，忽略某些细节，注重的是结果。
-c)    比如我想去厦门，面向过程是我开什么车去，怎么开，之间的过程是什么，都要很详细。面向对象是我要去厦门，到厦门即可，不管你是怎么到的。
-</code></pre><p>十六、    Oracle和Mysql有什么区别？</p>
-<pre><code>a)    库函数不同
-b)    Oracle是用表空间来管理的，Mysql不是
-c)    分页查询的时候mysql是用limt   oracle用rownum
-d)    Sql的语法不同
-</code></pre></the>
+              <p><strong> Spring框架部分：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>
+          
       
     </div>
     
@@ -741,6 +407,10 @@ d)    Sql的语法不同
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/面试资料/">面试资料</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="../../2018/06/23/面试题Spring框架/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -789,68 +459,8 @@ d)    Sql的语法不同
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Html部分：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-<p><the rest="" of="" contents="" |="" 余下全文=""><br>一、    索引有几种类型？</the></p>
-<pre><code>a)    4种类型：
-    1.    唯一索引：        不允许其中任何两行具有相同索引值得索引。
-    2.    非唯一索引：
-    1.    主键索引：        数据库表经常有一列或者多列组合，其值唯一标识表中的每一行。该列称为表的主键。在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。
-    3.    聚集索引：        在聚集索中，表中行的物理顺序与键值得逻辑（索引）顺序相同。一个表只能包含一个聚集索引
-</code></pre><p>二、    CSS选择器包括哪些？</p>
-<pre><code>a)    类选择器：        用“.”来标识
-b)    标签选择器：    用“HTML”标签来标识
-c)    ID选择器：        用“#”号来标识
-</code></pre><p>三、    JavaScript包括哪些数据类型？</p>
-<pre><code>a)    6种数据类型
-1.    Undefined   原始数据类型
-2.    Null        原始数据类型
-3.    String        原始数据类型
-4.    Number        原始数据类型
-5.    Boolean        原始数据类型
-6.    Object        对象数据类型
-</code></pre><p>四、    Servlet生命周期？</p>
-<pre><code>a)    （Web容器）服务器启动并加载Servlet后，Servlet生命周期开始，容器运行init方法，请求到达时运行其service方法，
-请求到达，service方法自动派遣运行与请求对应的doGet或doPost方法，当服务器决定将实例销毁的时候调用其destroy方法。
-</code></pre><p>五、    什么是Servlet？</p>
-<pre><code>a)    Servlet就是处理服务器与客户端交互的一个组件，主要用于响应HTTP请求，一般在MVC中的C(controller)控制层
-</code></pre><p>六、    B/S和C/S的区别？</p>
-<pre><code>a)    B/S是浏览器与服务器        不安全        维护成本低     一般用于广域网  
-b)    C/S是客户端与服务器        安全        维护成本高   一般用于局域网
-</code></pre><p>七、    MVC各个部分都有哪些技术来实现？</p>
-<pre><code>a)    M是model简写 也就是业务逻辑层（通过javaBean，EJB组件实现）
-b)    V是View简写，也就是应用的表面层（由jsp页面产生）
-c)    C是controller简写，也就是提供应用的处理过程控制（一般是一个Servlet），
-d)    通过这种设计模式把应用逻辑，处理过程，和显示逻辑分成不同的组件，这些组件可以交互和重用。
-</code></pre><p>八、    Servlet如何获取表单的参数？</p>
-<pre><code>a)    通过request.getParamenter();
-九、    JSP和Servlet的异同？他们之间的联系是什么？
-a)    JSP本质上就是Servlet技术的拓展，也就是简易版的servlet。
-b)    JSP更加强调应用的外表表达，侧重于视图，Servlet更加注重于控制逻辑。
-c)    JSP编译后是类Servlet
-d)    JSP是Java和HTML组合成的一个扩展名为.jsp的文件
-</code></pre><p>十、    Servlet中的转发（Forword）和重定向(Redirect)有什么区别？</p>
-<pre><code>a)    转发是一个请求的延续（1个请求），可以共享request的数据
-b)    重定向是开始一个新的请求，（2个请求），不可以共享request数据
-c)    地址栏：转发地址栏不发生变化，重定向地址栏是会变化的
-</code></pre><p>十一、    Cookie和Session的区别？</p>
-<pre><code>a)    存储位置：Cookie存在浏览器，Session存储在服务器
-b)    安全角度：cookie不安全，session安全
-c)    数据量：  cookie不可以存大数据，session可以存大数据，重要数据等.
-</code></pre><p>十二、    Http中get和post的 区别</p>
-<pre><code>a)    在客户端：Get方式在通过URL提交数据，数据在URL可以看到,POST方式，数据放置在HTML HEADER内提交
-b)    Get方法提交的数据最多只有1024字节，post则没有限制
-c)    Get不安全，Post安全
-</code></pre><p>十三、    JSP有哪些内置对象？</p>
-<pre><code>a)    Request  response out                : 输入输出对象
-b)    Session application pageContext        ：作用域通信对象
-c)    Page config                            ：Servlet对象
-d)    Exception                            ：异常对象
-</code></pre><p>十四、    JSP乱码如何解决？</p>
-<pre><code>a)    3种方法
-    1.    JSP页面乱码：&lt;%@page contentType=”text/html;charset=utf-8”%&gt;
-    2.    表单提交中文时候出现的乱码：request.setCharacterEncoding(“utf-8”);
-    3.    数据库连接出现乱码：    useUnicode=true&amp;characterEncoding=utf-8;
-</code></pre>
+              <p><strong> Html部分：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>
+          
       
     </div>
     
@@ -867,6 +477,10 @@ d)    Exception                            ：异常对象
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/面试资料/">面试资料</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a   href="../../2018/06/23/面试题Html/#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -886,10 +500,10 @@ d)    Exception                            ：异常对象
 
 
   
-    <article id="post-面试题Java基础" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-环境搭建连接详细版" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a  href="../../2018/06/23/面试题Java基础/" class="article-date">
+      <a  href="../../2018/06/23/环境搭建连接详细版/" class="article-date">
       <time datetime="2018-06-22T19:06:55.000Z" itemprop="datePublished">2018-06-23</time>
 </a>
 
@@ -904,7 +518,7 @@ d)    Exception                            ：异常对象
         
   
     <h1 itemprop="name">
-      <a  class="article-title" href="../../2018/06/23/面试题Java基础/">Java面试资料</a>
+      <a  class="article-title" href="../../2018/06/23/环境搭建连接详细版/">环境搭建(附链接)</a>
     </h1>
   
 
@@ -915,219 +529,7 @@ d)    Exception                            ：异常对象
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Java面试资料：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
-<the rest="" of="" contents="" |="" 余下全文="">
-
-<blockquote>
-<p><em>一、    继承的好处和弊端是什么？</em></p>
-</blockquote>
-<pre><code>（什么是继承：继承是一种连接的层次模型，鼓励类的重用）
-a)    好处是：提高代码复用性，维护性，让类与类之间产生了关系，是多态的前提。
-b)    弊端是：类的耦合性增强了，java开发的宗旨是高复用，低耦合。
-</code></pre><p>二、    Java中继承的特点是什么？</p>
-<pre><code>a)    Java只支持单继承，不支持多继承。
-b)    子类不能继承父类私有的属性和方法
-c)    子类不能继承父类的构造方法，但是可以通过super关键字去访问父类的构造方法。
-d)    注意不要为了部分功能去继承。
-</code></pre><p>三、    重写和重载的区别是什么？</p>
-<pre><code>a)    重载：是发生在同一个类中，在该类中如果存在多个同名方法，但是方法的参数列表不同，那么就说明该方法被重载了。（方法名相同，参数列表不同）。
-b)    重写：是发生在子类继承父类的关系中，父类的方法被子类继承，方法名，返回值类型，参数完全是一样的，但是方法体不一样，那么就说明父类的该方法被子类重写了（方法名，参数列表相同，方法体不同）
-</code></pre><p>四、    Java 中的final关键字有哪些用法？ </p>
-<pre><code>a)    修饰类：表示该类不能被继承；
-b)    修饰方法：表示方法不能被重写；
-c)    修饰变量：表示变量只能一次赋值以后值不能被修改（常量）。
-</code></pre><p>五、    阐述final、finally、finalize的区别。</p>
-<pre><code>a)    final:        是一个修饰符号
-b)    finally:    是跟在try/catch组合后面的，一般用于关闭资源，关闭连接
-c)    finalize:    Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。
-             这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。
-</code></pre><p>六、    成员变量和局部变量的区别？</p>
-<pre><code>a)    成员变量作用于整个类中，存放在内存的堆区。在这个类有效。存于堆中，随着对象产生而存在，消失而消失。
-b)    局部变量作用于方法中，参数上，语句中  存放在内存的栈区，随着所属区域的运行而存在，结束而释放。
-</code></pre><p>七、    实例变量和静态变量的区别？</p>
-<pre><code>a)    语法上的区别是静态变量前面要加static，实例变量则不用。
-b)    实例变量需要通过创建对象来调用。
-c)    静态变量是由static修饰的变量，可以由类名直接调用，也叫类变量。
-</code></pre><p>八、    是否可以从一个静态方法中调用非静态方法？</p>
-<pre><code>a)    不可以，因为非静态方法要与对象关联起来，必须创建一个对象后，才可以在该对象上进行方法调用，而static方法调用时不需要创建对象。
-</code></pre><p>九、    什么是内部类？作用是什么？内部类有几种？</p>
-<pre><code>a)    包裹在外部类的叫做内部类。
-b)    作用是4种：
-    1.    内部类可以很好的实现隐
-    2.    内部类拥有外部类的所有元素的访问权限
-    3.    内部类可以实现多重继承
-    4.    可以避免修改接口而实现同一个类中两种方法的调用。
-c)    有4种内部类：
-    1.    成员内部类
-    2.    局部内部类
-    3.    匿名内部类
-    4.    静态内部类
-</code></pre><p>十、    构造器可不可以重写？</p>
-<pre><code>a)    不可以，因为构造器不能被继承，所以不能被重写，但是可以被重载。
-</code></pre><p>十一、    Error和exception有什么区别？</p>
-<pre><code>a)    Error表示不是不可能但是很困难恢复情况下的一种问题，比如说内存溢出，服务器宕机等。
-b)    Exception表示一种设计或实现问题，也就是说，如果程序正常，它是绝对不会出现的问题。
-</code></pre><p>十二、    列出一些你常见的运行时异常？</p>
-<pre><code>- ArithmeticException        （算术异常） 
-- ClassCastException         （类转换异常） 
--IllegalArgumentException  （非法参数异常） 
--IndexOutOfBoundsException （下标越界异常） 
-- NullPointerException         （空指针异常） 
-- SecurityException         （安全异常）
-</code></pre><p>十三、    接口和抽象类的区别？</p>
-<pre><code>a)    构造方法：抽象类有，接口没有
-b)    成员变量：抽象类有，接口没有
-c)    普通方法：抽象类有，接口没有
-d)    静态方法：抽象类有，接口没有
-e)    访问类型：public protected private  接口：public
-f)    一个类可以实现多个接口，但只能继承一个抽象类。
-</code></pre><p>十四、    创建线程有几种方式？分别是什么？</p>
-<pre><code>a)    2种：
-1.    继承Thread类
-2.    实现Runnable接口
-b)    补充：Java 5以后创建线程还有第三种方式：实现Callable接口，该接口中的call方法可以在线程执行结束时产生一个返回值 
-</code></pre><p>十五、    创建线程时继承Thread类和实现Runnable接口有什么异同，推荐使用那一种？</p>
-<pre><code>a)    同：都有重写run方法来定义线程行为。
-b)    推荐使用后者：因为java中的继承是单一继承，显然使用Runnable更加灵活。
-</code></pre><p>十六、    启动一个线程是调用run()还是start()方法？ </p>
-<pre><code>a)    用start()方法，使线程所代表的虚拟处理机处于可运行状态，这意味着它可以由JVM 调度并执行，
-这并不意味着线程就会立即运行。run()方法是线程启动后要进行回调（callback）的方法。
-</code></pre><p>十七、    线程的生命周期？</p>
-<pre><code>a)    5个阶段：
-    1.    新建  (new Thread)：    当创建Thread类的一个实例（对象）时，此线程进入新建状态（未被启动）Thread t1 = new Thead();    
-    2.    就绪    (runnable)：    线程已经被启动，正在等待被分配给CPU时间片，也就是说此时线程正在就绪队列中排队等候得到CPU资源，
-    3.    运行     (running)：    线程获得CPU资源正在执行任务（run()方法），此时除非此线程自动放弃CPU资源或者有优先级更高的线程进入，线程将一直运行到结束。
-    4.    阻塞     (blocked)：    由于某种原因导致正在运行的线程让出CPU并暂停自己的执行，即进入阻塞状态。
-    5.    死亡       (dead)：    当线程执行完毕或者被其他线程杀死，线程就进入死亡状态，这时线程不可能再进入就绪状态等待执行。
-</code></pre><p>十八、    请说出与线程同步以及线程调度相关的方法？</p>
-<pre><code>a)     wait()：使一个线程处于等待（阻塞）状态，并且释放所持有的对象的锁； 
-b)     sleep()：使一个正在运行的线程处于睡眠状态，是一个静态方法，调用此方法要处理InterruptedException异常；
-c)     notify()：唤醒一个处于等待状态的线程，当然在调用此方法的时候，并不能确切的唤醒某一个等待状态的线程，而是由JVM确定唤醒哪个线程，而且与优先级无关； 
-d)     notityAll()：唤醒所有处于等待状态的线程，该方法并不是将对象的锁给所有线程，而是让它们竞争，只有获得锁的线程才能进入就绪状态；
-</code></pre><p>十九、    线程的sleep()方法和wait()有什么区别？</p>
-<pre><code>a)    Sleep：休眠，线程的静态方法。将CPU时间片让给其他线程，但是对象锁依然保持，所以休眠时间结束后会自动恢复。
-b)    Wait：等待，会导致当前线程放弃对象的锁，让线程进入等待池，只有调用对象的notify()方法，
-（或者notifyAll()方法）时候才能唤醒等待池中的线程进入等锁池，如果线程重新获得对象的锁就可以进入就绪状态。
-</code></pre><p>二十、    List、Set、Map是否都继承与collection接口？</p>
-<pre><code>a)    不全是，List/Set是，Map不是。
-</code></pre><p>二十一、    List、Set、Map有什么区别？</p>
-<pre><code>a)    List：    有序可重复  可迭代器遍历
-b)    Set：    无序不重复    可迭代器遍历
-c)    Map：    键值对形式，无序，Key不可重复，Value可以重复    先遍历Key再遍历Value
-</code></pre><p>二十二、    HashMap和HashTable的区别？</p>
-<pre><code>a)    HashMap是HashTable的轻量级实现。
-b)    线程安全：        HashTable 安全，HashMap不安全
-c)    执行效率：        HashTable慢，HashMap快
-d)    对Null存储：    HashTable不允许，HashMap允许存NULL键值对
-</code></pre><p>二十三、    Java有几种类型的流？分别继承于什么？</p>
-<pre><code>a)    2种：
-    1.    字节流：继承于：InputStream/OutputStream
-    2.    字符流：继承于：Reader/Writer
-</code></pre><p>二十四、    String  StringBuilder  StringBuffer的区别？</p>
-<pre><code>a)    String是由final所修饰的类，所以String是不可变的字符串常量，使用字符串拼接时是不同的两个空间。
-b)    StringBuffer是可以改变的字符串变量，可以通过append直接在字符串后面追加，是线程安全的
-c)    StringBuffer是可以改变的字符串变量，可以通过append直接在字符串后面追加，是线程不安全的
-d)    执行效率StringBuffer执行效率最高。
-</code></pre><p>二十五、    阐述JDBC操作数据库的步骤。 </p>
-<pre><code>a)    分5步：
-    1.    加载驱动
-    2.    创建连接
-    3.    创建语句
-    4.    执行语句
-    5.    处理结果
-    6.    关闭资源
-</code></pre><p>二十六、    Statement和PreparedStatement有什么区别？哪个性能更好？</p>
-<pre><code>a)    PreparedStatement可减少SQL编译错误，增加SQL安全性，也就是放在SQL注入攻击。
-b)    当批量处理SQL或频繁执行相同的查询时，PreparedStatement有明显的性能更快。
-</code></pre><p>二十七、    什么是SQL注入攻击？</p>
-<pre><code>a)    就是攻击者把SQL命令插入到Web表单的输入域或页面请求的查询字符串，欺骗服务器执行恶意的SQL命令
-</code></pre><p>二十八、    请简述你了解的几个排序方法，最少说出3个，并写出其中一个？</p>
-<pre><code>a)    冒泡排序，选择排序，插入排序，希尔排序
-</code></pre><p>二十九、    什么是事务？事务的ACID四个特性分别是什么？举个生活当中的例子说明下什么是事务？</p>
-<pre><code>a)    事务就是指作为单个逻辑工作单元执行的一系列操作，同步发生数据更新时，防止数据的不一致。
-b)    ACID：
-    1.     原子性(Atomic)：        事务中各项操作，要么全做要么全不做，任何一项操作的失败都会导致整个事务的失败； 
-    2.     一致性(Consistent)：    事务结束后系统状态是一致的； 
-    3.     隔离性(Isolated)：        并发执行的事务彼此无法看到对方的中间状态；
-    4.     持久性(Durable)：        事务完成后所做的改动都会被持久化，即使发生灾难性的失败。通过日志和同步备份可以在故障发生后重建数据。
-</code></pre><p>三十、    什么是索引？如何创建索引？举个生活中的例子来诠释索引？</p>
-<pre><code>a)    索引是一种可以直接访问数据库表中某一数据行的树型结构，为了提高查询效率而引入的，是独立与表的对象。
-b)    Create index 索引名
-</code></pre><p>一、    JSP技术优缺点？<br>a)    优点：</p>
-<ol>
-<li>JSP代码跨平台</li>
-<li>JSP组件跨平台</li>
-<li>支持多种网页格式</li>
-<li>JSP标签可扩充性<br>b)    缺点：</li>
-<li>JSP技术极大的增加了产品的复杂性。</li>
-<li>JSP程序调试很困难<br>二、<br>web.xml文件中可以配置哪些内容？<br>a)    web.xml用于配置Web应用的相关信息，如：监听器（listener）、过滤器（filter）、 Servlet、相关参数、会话超时时间、安全验证方式、错误页面等。</li>
-</ol>
-</the>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="../../categories/interview/">interview</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/面试资料/">面试资料</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-软件WebStrom快捷键" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="../../2017/10/30/软件WebStrom快捷键/" class="article-date">
-      <time datetime="2017-10-30T14:35:37.000Z" itemprop="datePublished">2017-10-30</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="../../2017/10/30/软件WebStrom快捷键/">WebStrom快捷键</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><strong> WebStrom快捷键：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>WebStrom快捷键<br>
+              <p><strong> 环境搭建(附链接)：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>
           
       
     </div>
@@ -1136,18 +538,18 @@ b)    Create index 索引名
       
       
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="../../categories/tool/">tool</a>
+    <a class="article-category-link" href="../../categories/servicer/">servicer</a>
     </div>
 
 
       
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/WebStrom/">WebStrom</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/JDK-Tomcat-MySql/">JDK Tomcat MySql</a></li></ul>
     </div>
 
       
         <p class="article-more-link">
-          <a   href="../../2017/10/30/软件WebStrom快捷键/#more">查看更多 >></a>
+          <a   href="../../2018/06/23/环境搭建连接详细版/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
@@ -1218,6 +620,76 @@ b)    Create index 索引名
       
         <p class="article-more-link">
           <a   href="../../2017/10/30/软件Intellij IDEA 快捷键整理/#more">查看更多 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-软件WebStrom快捷键" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="../../2017/10/30/软件WebStrom快捷键/" class="article-date">
+      <time datetime="2017-10-30T14:35:37.000Z" itemprop="datePublished">2017-10-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="../../2017/10/30/软件WebStrom快捷键/">WebStrom快捷键</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><strong> WebStrom快捷键：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>WebStrom快捷键<br>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="../../categories/tool/">tool</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../tags/WebStrom/">WebStrom</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a   href="../../2017/10/30/软件WebStrom快捷键/#more">查看更多 >></a>
         </p>
       
       <div class="clearfix"></div>
