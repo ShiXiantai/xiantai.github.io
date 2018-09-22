@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Html部分 | 脑洞星球</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Html部分：  一、    索引有几种类型？ a)    4种类型：     1.    唯一索引：        不允许其中任何两行具有相同索引值得索引。     2.    非唯一索引：     1.    主键索引：        数据库表经常有一列或者多列组合，其值唯一标识表中的每一行。该列称为表的主键。在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。">
+<meta name="keywords" content="面试资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html部分">
+<meta property="og:url" content="https://nd.ataisxt.cn/2018/06/23/面试题Html/index.html">
+<meta property="og:site_name" content="脑洞星球">
+<meta property="og:description" content="Html部分：  一、    索引有几种类型？ a)    4种类型：     1.    唯一索引：        不允许其中任何两行具有相同索引值得索引。     2.    非唯一索引：     1.    主键索引：        数据库表经常有一列或者多列组合，其值唯一标识表中的每一行。该列称为表的主键。在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-22T20:23:20.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Html部分">
+<meta name="twitter:description" content="Html部分：  一、    索引有几种类型？ a)    4种类型：     1.    唯一索引：        不允许其中任何两行具有相同索引值得索引。     2.    非唯一索引：     1.    主键索引：        数据库表经常有一列或者多列组合，其值唯一标识表中的每一行。该列称为表的主键。在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。">
+  
+    <link rel="alternative" href="/atom.xml" title="脑洞星球" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xiantaii Shi</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="../../../../archives/">所有文章</a></li>
+                        
+                            <li><a  href="../../../../categories/tool/">开发工具</a></li>
+                        
+                            <li><a  href="../../../../categories/front-end/">前端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/after-end/">后端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/algorithm/">硬件学习</a></li>
+                        
+                            <li><a  href="../../../../categories/assist/">辅助软件</a></li>
+                        
+                            <li><a  href="../../../../categories/servicer/">服务器</a></li>
+                        
+                            <li><a  href="../../../../categories/interview/">面试资料</a></li>
+                        
+                            <li><a  href="../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/sxiantai/xiantai.github.io" title="github">github</a>
+                            
+                                <a class="fl jianshu"  target="_blank" href="https://www.jianshu.com/u/18f66ec060ac" title="jianshu">jianshu</a>
+                            
+                                <a class="fl rss"  target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="../../../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../../../tags/Centos7-4-Jdk8-Tomcat9-Mysql5-7-20/" style="font-size: 10px;">Centos7.4   Jdk8  Tomcat9  Mysql5.7.20</a> <a href="../../../../tags/Excel/" style="font-size: 10px;">Excel</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/HTTP状态码说明/" style="font-size: 10px;">HTTP状态码说明</a> <a href="../../../../tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="../../../../tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="../../../../tags/JDK-Tomcat-MySql/" style="font-size: 10px;">JDK Tomcat MySql</a> <a href="../../../../tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="../../../../tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="../../../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../../../tags/OOP/" style="font-size: 10px;">OOP</a> <a href="../../../../tags/WEB/" style="font-size: 10px;">WEB</a> <a href="../../../../tags/WebStrom/" style="font-size: 10px;">WebStrom</a> <a href="../../../../tags/js正则表达式/" style="font-size: 10px;">js正则表达式</a> <a href="../../../../tags/基础/" style="font-size: 10px;">基础</a> <a href="../../../../tags/雷霆战机-小游戏/" style="font-size: 10px;">雷霆战机\小游戏</a> <a href="../../../../tags/面试资料/" style="font-size: 20px;">面试资料</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/sxiantai">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xiantaii Shi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xiantaii Shi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../categories/tool/">开发工具</a></li>
+                
+                    <li><a href="../../../../categories/front-end/">前端学习</a></li>
+                
+                    <li><a href="../../../../categories/after-end/">后端学习</a></li>
+                
+                    <li><a href="../../../../categories/algorithm/">硬件学习</a></li>
+                
+                    <li><a href="../../../../categories/assist/">辅助软件</a></li>
+                
+                    <li><a href="../../../../categories/servicer/">服务器</a></li>
+                
+                    <li><a href="../../../../categories/interview/">面试资料</a></li>
+                
+                    <li><a href="../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/sxiantai/xiantai.github.io" title="github">github</a>
+                    
+                        <a class="jianshu" target="_blank" href="https://www.jianshu.com/u/18f66ec060ac" title="jianshu">jianshu</a>
+                    
+                        <a class="rss" target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-面试题Html" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="" class="article-date">
+      <time datetime="2018-06-22T19:06:55.000Z" itemprop="datePublished">2018-06-23</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Html部分
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="../../../../categories/interview/">interview</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/面试资料/">面试资料</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> Html部分：</strong> <excerpt in="" index="" |="" 首页摘要=""></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>一、    索引有几种类型？</the></p>
+<pre><code>a)    4种类型：
+    1.    唯一索引：        不允许其中任何两行具有相同索引值得索引。
+    2.    非唯一索引：
+    1.    主键索引：        数据库表经常有一列或者多列组合，其值唯一标识表中的每一行。该列称为表的主键。在数据库关系图中为表定义主键将自动创建主键索引，主键索引是唯一索引的特定类型。
+    3.    聚集索引：        在聚集索中，表中行的物理顺序与键值得逻辑（索引）顺序相同。一个表只能包含一个聚集索引
+</code></pre><p>二、    CSS选择器包括哪些？</p>
+<pre><code>a)    类选择器：        用“.”来标识
+b)    标签选择器：    用“HTML”标签来标识
+c)    ID选择器：        用“#”号来标识
+</code></pre><p>三、    JavaScript包括哪些数据类型？</p>
+<pre><code>a)    6种数据类型
+1.    Undefined   原始数据类型
+2.    Null        原始数据类型
+3.    String        原始数据类型
+4.    Number        原始数据类型
+5.    Boolean        原始数据类型
+6.    Object        对象数据类型
+</code></pre><p>四、    Servlet生命周期？</p>
+<pre><code>a)    （Web容器）服务器启动并加载Servlet后，Servlet生命周期开始，容器运行init方法，请求到达时运行其service方法，
+请求到达，service方法自动派遣运行与请求对应的doGet或doPost方法，当服务器决定将实例销毁的时候调用其destroy方法。
+</code></pre><p>五、    什么是Servlet？</p>
+<pre><code>a)    Servlet就是处理服务器与客户端交互的一个组件，主要用于响应HTTP请求，一般在MVC中的C(controller)控制层
+</code></pre><p>六、    B/S和C/S的区别？</p>
+<pre><code>a)    B/S是浏览器与服务器        不安全        维护成本低     一般用于广域网  
+b)    C/S是客户端与服务器        安全        维护成本高   一般用于局域网
+</code></pre><p>七、    MVC各个部分都有哪些技术来实现？</p>
+<pre><code>a)    M是model简写 也就是业务逻辑层（通过javaBean，EJB组件实现）
+b)    V是View简写，也就是应用的表面层（由jsp页面产生）
+c)    C是controller简写，也就是提供应用的处理过程控制（一般是一个Servlet），
+d)    通过这种设计模式把应用逻辑，处理过程，和显示逻辑分成不同的组件，这些组件可以交互和重用。
+</code></pre><p>八、    Servlet如何获取表单的参数？</p>
+<pre><code>a)    通过request.getParamenter();
+九、    JSP和Servlet的异同？他们之间的联系是什么？
+a)    JSP本质上就是Servlet技术的拓展，也就是简易版的servlet。
+b)    JSP更加强调应用的外表表达，侧重于视图，Servlet更加注重于控制逻辑。
+c)    JSP编译后是类Servlet
+d)    JSP是Java和HTML组合成的一个扩展名为.jsp的文件
+</code></pre><p>十、    Servlet中的转发（Forword）和重定向(Redirect)有什么区别？</p>
+<pre><code>a)    转发是一个请求的延续（1个请求），可以共享request的数据
+b)    重定向是开始一个新的请求，（2个请求），不可以共享request数据
+c)    地址栏：转发地址栏不发生变化，重定向地址栏是会变化的
+</code></pre><p>十一、    Cookie和Session的区别？</p>
+<pre><code>a)    存储位置：Cookie存在浏览器，Session存储在服务器
+b)    安全角度：cookie不安全，session安全
+c)    数据量：  cookie不可以存大数据，session可以存大数据，重要数据等.
+</code></pre><p>十二、    Http中get和post的 区别</p>
+<pre><code>a)    在客户端：Get方式在通过URL提交数据，数据在URL可以看到,POST方式，数据放置在HTML HEADER内提交
+b)    Get方法提交的数据最多只有1024字节，post则没有限制
+c)    Get不安全，Post安全
+</code></pre><p>十三、    JSP有哪些内置对象？</p>
+<pre><code>a)    Request  response out                : 输入输出对象
+b)    Session application pageContext        ：作用域通信对象
+c)    Page config                            ：Servlet对象
+d)    Exception                            ：异常对象
+</code></pre><p>十四、    JSP乱码如何解决？</p>
+<pre><code>a)    3种方法
+    1.    JSP页面乱码：&lt;%@page contentType=”text/html;charset=utf-8”%&gt;
+    2.    表单提交中文时候出现的乱码：request.setCharacterEncoding(“utf-8”);
+    3.    数据库连接出现乱码：    useUnicode=true&amp;characterEncoding=utf-8;
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="">Html部分</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Xiantaii Shi 的个人博客">Xiantaii Shi</a></p>
+        <p><span>发布时间:</span>2018年06月23日 - 03时06分</p>
+        <p><span>最后更新:</span>2018年09月23日 - 04时23分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="Html部分">https://nd.ataisxt.cn/2018/06/23/面试题Html/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://nd.ataisxt.cn/2018/06/23/面试题Html/　　作者: Xiantaii Shi" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="../面试题Spring框架/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Spring框架部分
+        
+      </div>
+    </a>
+  
+  
+    <a  href="../面试题Java基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java面试资料</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="../面试题Spring框架/" title="上一篇: Spring框架部分">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="../面试题Java基础/" title="下一篇: Java面试资料">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../09/21/正则表达式/">用户名、密码等15个常用的js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="../../../08/30/前端HTML/">WEB前端HTML</a></li><li class="post-list-item"><a class="post-list-link" href="../../../08/30/前端JavaScript/">WEB前端JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="../../../08/30/前端JQuery/">WEB前端JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../../../08/30/前面Web框架/">前端WEB框架</a></li><li class="post-list-item"><a class="post-list-link" href="../../../08/30/前端CSS/">WEB前端CSS</a></li><li class="post-list-item"><a class="post-list-link" href="../../../07/23/Java面向对象雷霆战机/">Java面向对象-雷霆战机</a></li><li class="post-list-item"><a class="post-list-link" href="../环境搭建连接详细版/">环境搭建(附链接)</a></li><li class="post-list-item"><a class="post-list-link" href="../Java面向对象/">Java面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="../环境搭建centos7.4/">环境搭建Centos7.4</a></li><li class="post-list-item"><a class="post-list-link" href="../Java基础Basic/">Java基础</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Spring框架/">Spring框架部分</a></li><li class="post-list-item"><a class="post-list-link" href="">Html部分</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Java基础/">Java面试资料</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/软件WebStrom快捷键/">WebStrom快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/软件Intellij IDEA 快捷键整理/">IDEA快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/HTTP状态码说明/">HTTP状态码说明</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/数据库JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/excel/">Excel</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Linux查看系统配置常用命令/">Linux查看系统配置常用命令</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Xiantaii Shi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="../../../../js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
