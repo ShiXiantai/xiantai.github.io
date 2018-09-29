@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>数据库和JDBC | 脑洞星球</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数据库和JDBC： 数据库和JDBC">
+<meta name="keywords" content="数据库和JDBC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库和JDBC">
+<meta property="og:url" content="https://nd.ataisxt.cn/2018/08/30/面试题数据库和JDBC/index.html">
+<meta property="og:site_name" content="脑洞星球">
+<meta property="og:description" content="数据库和JDBC： 数据库和JDBC">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-29T04:50:17.509Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库和JDBC">
+<meta name="twitter:description" content="数据库和JDBC： 数据库和JDBC">
+  
+    <link rel="alternative" href="/atom.xml" title="脑洞星球" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xiantai Shi</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="../../../../archives/">所有文章</a></li>
+                        
+                            <li><a  href="../../../../categories/tool/">开发工具</a></li>
+                        
+                            <li><a  href="../../../../categories/front-end/">前端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/after-end/">后端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/algorithm/">硬件学习</a></li>
+                        
+                            <li><a  href="../../../../categories/assist/">辅助软件</a></li>
+                        
+                            <li><a  href="../../../../categories/servicer/">服务器</a></li>
+                        
+                            <li><a  href="../../../../categories/interview/">面试资料</a></li>
+                        
+                            <li><a  href="../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/sxiantai/xiantai.github.io" title="github">github</a>
+                            
+                                <a class="fl jianshu"  target="_blank" href="https://www.jianshu.com/u/18f66ec060ac" title="jianshu">jianshu</a>
+                            
+                                <a class="fl rss"  target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="../../../../tags/API-SE/" style="font-size: 10px;">API,SE</a> <a href="../../../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../../../tags/Centos7-4-Jdk8-Tomcat9-Mysql5-7-20/" style="font-size: 10px;">Centos7.4   Jdk8  Tomcat9  Mysql5.7.20</a> <a href="../../../../tags/Excel/" style="font-size: 10px;">Excel</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/HTTP状态码说明/" style="font-size: 10px;">HTTP状态码说明</a> <a href="../../../../tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="../../../../tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="../../../../tags/JDK-Tomcat-MySql/" style="font-size: 10px;">JDK Tomcat MySql</a> <a href="../../../../tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="../../../../tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="../../../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../../../tags/OOP/" style="font-size: 15px;">OOP</a> <a href="../../../../tags/Servlet-JSP/" style="font-size: 10px;">Servlet-JSP</a> <a href="../../../../tags/Spring-Mybatis-AJAX/" style="font-size: 10px;">Spring-Mybatis-AJAX</a> <a href="../../../../tags/WEB/" style="font-size: 10px;">WEB</a> <a href="../../../../tags/WebStrom/" style="font-size: 10px;">WebStrom</a> <a href="../../../../tags/Web基础，JavaScript，JQuery/" style="font-size: 10px;">Web基础，JavaScript，JQuery</a> <a href="../../../../tags/js正则表达式/" style="font-size: 10px;">js正则表达式</a> <a href="../../../../tags/基础/" style="font-size: 10px;">基础</a> <a href="../../../../tags/常见的几种设计模式/" style="font-size: 10px;">常见的几种设计模式</a> <a href="../../../../tags/数据库和JDBC/" style="font-size: 10px;">数据库和JDBC</a> <a href="../../../../tags/线程/" style="font-size: 10px;">线程</a> <a href="../../../../tags/雷霆战机-小游戏/" style="font-size: 10px;">雷霆战机\小游戏</a> <a href="../../../../tags/面试资料/" style="font-size: 20px;">面试资料</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/sxiantai">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xiantai Shi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xiantai Shi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../categories/tool/">开发工具</a></li>
+                
+                    <li><a href="../../../../categories/front-end/">前端学习</a></li>
+                
+                    <li><a href="../../../../categories/after-end/">后端学习</a></li>
+                
+                    <li><a href="../../../../categories/algorithm/">硬件学习</a></li>
+                
+                    <li><a href="../../../../categories/assist/">辅助软件</a></li>
+                
+                    <li><a href="../../../../categories/servicer/">服务器</a></li>
+                
+                    <li><a href="../../../../categories/interview/">面试资料</a></li>
+                
+                    <li><a href="../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/sxiantai/xiantai.github.io" title="github">github</a>
+                    
+                        <a class="jianshu" target="_blank" href="https://www.jianshu.com/u/18f66ec060ac" title="jianshu">jianshu</a>
+                    
+                        <a class="rss" target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-面试题数据库和JDBC" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="" class="article-date">
+      <time datetime="2018-08-30T14:35:37.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库和JDBC
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="../../../../categories/interview/">interview</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/数据库和JDBC/">数据库和JDBC</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> 数据库和JDBC：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>数据库和JDBC<br><a id="more"></a></excerpt></p>
+<p><the rest="" of="" contents="" |="" 余下全文=""><br>数据库和JDBC</the></p>
+<pre><code>1.关系型数据库
+2.什么是内连接，外连接，自连接
+3.在数据库的条件查询中如何优化速度
+4.数据库中主键、外键的作用
+5.索引的优点和缺点是什么
+6.主键和索引的区别
+7.什么叫视图
+8.简述truncate，delete，drop之间的区别
+</code></pre><p>1.JDBC的开发步骤</p>
+<pre><code>1：加载驱动，告诉它用哪个数据库厂商提供的实现类Class.forName(“”)
+2：添加配置参数：URL
+3：创建连接，Connection con = DriverManager.getConnection(“”);
+4：创建Statement或者PreparedStatement声明
+5：执行sql，获取ResultSet结果集，运行结果集的处理(遍历获取数据等等)
+6：关闭连接，释放资源 
+</code></pre><p>2.连接池的工作原理</p>
+<pre><code>创建连接池后，它会自动初始化一批(初始化连接数)连接，这些连接的状态都是空闲态；
+调用连接池获取连接的方法，它会返回一个连接，并将此连接标记为占用态；
+调用连接关闭的方法，是将其归还给连接池，状态变为空闲态，内容清空；
+连接池发现连接快不够用(最小空闲连接)时，会再次初始化一批(每次增加连接数)空闲连接；
+连接池发现内部有太多(最大空闲连接数)的空闲连接时，会将一批(每次增加连接数)连接关闭(保留最小连接数)；
+当连接池内占用连接达到数据库极限(最大连接数)时，下次请求连接池会让其等待。
+</code></pre><p>3.statement和PreparedStatement的区别</p>
+<pre><code>Statement适合执行静态(无条件)sql，statement是直接发送sql语句到数据库，事先没有进行预编译，这样会导致恶意注入sql的语句出现问题
+PreparedStatement适合执行动态(有条件)sql，preparestatement会将sql进行预编译，当sql语句要重复执行时，数据库会调用以前编译好的sql，所以preparestatement在性能方面会更好，preparestatement在执行sql时，会对传人的参数进行强制类型转换，以保证数据格式与底层数据格式一致
+</code></pre><p>4.什么是事务管理</p>
+<pre><code>事务是一组原子操作单元，一般指要做或所做的事情
+特性：
+原子性：事物是一个完成的过程，要么都成功，要么都失败
+一致性：事务完成前后数据保持一致，既收支平衡
+隔离性：一个事务处理对另外一个事务没有影响，事务在处理过程中不能被外界访问
+持久性：事务一旦达成，便永久生效
+</code></pre><p>5.分页查询</p>
+<pre><code>1.假分页(内存分页)：第一次查询时查出所有的数据，然后存入内存(List)，第N次查询时，直接从内存(List)中取数，特点第一次查询慢，后面快，耗内存，只适合数据量极少的项目。
+2.真分页(物理分页)：每次查询都是从数据库中取出一页(N条)数据，基于分页的SQL实现分页查询，特点每次查询速度一样，节约内存，适合所有项目。
+1.Oracle分页的SQL：
+select  *  from(
+    select  t.*,rownum  r  from(
+        Select  *  from  emps  order  by  empno
+    )  t
+)  where  r  between  11  and  20
+2.Mysql分页的SQL
+Select  *  from  emps  prder  by  empno
+Limit  11,10    (第十一条记录开始，查询10条记录)
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="">数据库和JDBC</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Xiantai Shi 的个人博客">Xiantai Shi</a></p>
+        <p><span>发布时间:</span>2018年08月30日 - 22时35分</p>
+        <p><span>最后更新:</span>2018年09月29日 - 12时50分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="数据库和JDBC">https://nd.ataisxt.cn/2018/08/30/面试题数据库和JDBC/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://nd.ataisxt.cn/2018/08/30/面试题数据库和JDBC/　　作者: Xiantai Shi" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="../面试题常见的几种设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          常见的几种设计模式
+        
+      </div>
+    </a>
+  
+  
+    <a  href="../面试题线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">线程</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="../面试题常见的几种设计模式/" title="上一篇: 常见的几种设计模式">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="../面试题线程/" title="下一篇: 线程">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../09/21/正则表达式/">用户名、密码等15个常用的js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Web基础-JavaScript-JQuery/">Web基础，JavaScript，JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../前端JQuery/">WEB前端JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../前面Web框架/">前端WEB框架</a></li><li class="post-list-item"><a class="post-list-link" href="../前端JavaScript/">WEB前端JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题API-SE/">API,SE</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Servlet-JSP/">Servlet-JSP</a></li><li class="post-list-item"><a class="post-list-link" href="../前端CSS/">WEB前端CSS</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Spring-Mybatis-AJAX/">Spring-Mybatis-AJAX</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题常见的几种设计模式/">常见的几种设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="">数据库和JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题线程/">线程</a></li><li class="post-list-item"><a class="post-list-link" href="../前端HTML/">WEB前端HTML</a></li><li class="post-list-item"><a class="post-list-link" href="../../../07/23/Java面向对象雷霆战机/">Java面向对象-雷霆战机</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/环境搭建连接详细版/">环境搭建(附链接)</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题Html/">Html部分</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题Spring框架/">Spring框架部分</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题OOP/">OOP</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/环境搭建centos7.4/">环境搭建Centos7.4</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/Java基础Basic/">Java基础</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/Java面向对象/">Java面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题Java基础/">Java面试资料</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/HTTP状态码说明/">HTTP状态码说明</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/软件Intellij IDEA 快捷键整理/">IDEA快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/数据库JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Linux查看系统配置常用命令/">Linux查看系统配置常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/excel/">Excel</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/软件WebStrom快捷键/">WebStrom快捷键</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Xiantai Shi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="../../../../js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

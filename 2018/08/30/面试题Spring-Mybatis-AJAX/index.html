@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>Spring-Mybatis-AJAX | 脑洞星球</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring-Mybatis-AJAX： Spring-Mybatis-AJAX">
+<meta name="keywords" content="Spring-Mybatis-AJAX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring-Mybatis-AJAX">
+<meta property="og:url" content="https://nd.ataisxt.cn/2018/08/30/面试题Spring-Mybatis-AJAX/index.html">
+<meta property="og:site_name" content="脑洞星球">
+<meta property="og:description" content="Spring-Mybatis-AJAX： Spring-Mybatis-AJAX">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-29T05:07:01.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring-Mybatis-AJAX">
+<meta name="twitter:description" content="Spring-Mybatis-AJAX： Spring-Mybatis-AJAX">
+  
+    <link rel="alternative" href="/atom.xml" title="脑洞星球" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Xiantai Shi</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="../../../../archives/">所有文章</a></li>
+                        
+                            <li><a  href="../../../../categories/tool/">开发工具</a></li>
+                        
+                            <li><a  href="../../../../categories/front-end/">前端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/after-end/">后端学习</a></li>
+                        
+                            <li><a  href="../../../../categories/algorithm/">硬件学习</a></li>
+                        
+                            <li><a  href="../../../../categories/assist/">辅助软件</a></li>
+                        
+                            <li><a  href="../../../../categories/servicer/">服务器</a></li>
+                        
+                            <li><a  href="../../../../categories/interview/">面试资料</a></li>
+                        
+                            <li><a  href="../../../../about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="https://github.com/sxiantai/xiantai.github.io" title="github">github</a>
+                            
+                                <a class="fl jianshu"  target="_blank" href="https://www.jianshu.com/u/18f66ec060ac" title="jianshu">jianshu</a>
+                            
+                                <a class="fl rss"  target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="../../../../tags/API-SE/" style="font-size: 10px;">API,SE</a> <a href="../../../../tags/CSS/" style="font-size: 10px;">CSS</a> <a href="../../../../tags/Centos7-4-Jdk8-Tomcat9-Mysql5-7-20/" style="font-size: 10px;">Centos7.4   Jdk8  Tomcat9  Mysql5.7.20</a> <a href="../../../../tags/Excel/" style="font-size: 10px;">Excel</a> <a href="../../../../tags/HTML/" style="font-size: 10px;">HTML</a> <a href="../../../../tags/HTTP状态码说明/" style="font-size: 10px;">HTTP状态码说明</a> <a href="../../../../tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="../../../../tags/JDBC/" style="font-size: 10px;">JDBC</a> <a href="../../../../tags/JDK-Tomcat-MySql/" style="font-size: 10px;">JDK Tomcat MySql</a> <a href="../../../../tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="../../../../tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="../../../../tags/Linux/" style="font-size: 10px;">Linux</a> <a href="../../../../tags/OOP/" style="font-size: 15px;">OOP</a> <a href="../../../../tags/Servlet-JSP/" style="font-size: 10px;">Servlet-JSP</a> <a href="../../../../tags/Spring-Mybatis-AJAX/" style="font-size: 10px;">Spring-Mybatis-AJAX</a> <a href="../../../../tags/WEB/" style="font-size: 10px;">WEB</a> <a href="../../../../tags/WebStrom/" style="font-size: 10px;">WebStrom</a> <a href="../../../../tags/Web基础，JavaScript，JQuery/" style="font-size: 10px;">Web基础，JavaScript，JQuery</a> <a href="../../../../tags/js正则表达式/" style="font-size: 10px;">js正则表达式</a> <a href="../../../../tags/基础/" style="font-size: 10px;">基础</a> <a href="../../../../tags/常见的几种设计模式/" style="font-size: 10px;">常见的几种设计模式</a> <a href="../../../../tags/数据库和JDBC/" style="font-size: 10px;">数据库和JDBC</a> <a href="../../../../tags/线程/" style="font-size: 10px;">线程</a> <a href="../../../../tags/雷霆战机-小游戏/" style="font-size: 10px;">雷霆战机\小游戏</a> <a href="../../../../tags/面试资料/" style="font-size: 20px;">面试资料</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://github.com/sxiantai">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.jianshu.com/">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Xiantai Shi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Xiantai Shi</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="../../../../archives/">所有文章</a></li>
+                
+                    <li><a href="../../../../categories/tool/">开发工具</a></li>
+                
+                    <li><a href="../../../../categories/front-end/">前端学习</a></li>
+                
+                    <li><a href="../../../../categories/after-end/">后端学习</a></li>
+                
+                    <li><a href="../../../../categories/algorithm/">硬件学习</a></li>
+                
+                    <li><a href="../../../../categories/assist/">辅助软件</a></li>
+                
+                    <li><a href="../../../../categories/servicer/">服务器</a></li>
+                
+                    <li><a href="../../../../categories/interview/">面试资料</a></li>
+                
+                    <li><a href="../../../../about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/sxiantai/xiantai.github.io" title="github">github</a>
+                    
+                        <a class="jianshu" target="_blank" href="https://www.jianshu.com/u/18f66ec060ac" title="jianshu">jianshu</a>
+                    
+                        <a class="rss" target="_blank" href="../../../../atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-面试题Spring-Mybatis-AJAX" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="" class="article-date">
+      <time datetime="2018-08-30T14:35:37.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring-Mybatis-AJAX
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="../../../../categories/interview/">interview</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="../../../../tags/Spring-Mybatis-AJAX/">Spring-Mybatis-AJAX</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> Spring-Mybatis-AJAX：</strong> <excerpt in="" index="" |="" 首页摘要=""><br>Spring-Mybatis-AJAX<br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<p>1.Spring是什么，特点是什么</p>
+<pre><code>Spring是个Java企业级应用的开发框架，是个开源的，轻量级的应用开发框架，目的是为了简化企业级应用开发，并通过POJO为基础的编程模型促进良好的编程习惯。POJO对象：传统Java对象(满足JavaBean规范的Java对象)
+特点是：
+简化开发：spring对常用的API做了简化，比如对jdbc做了简化，我们使用spring jdbc来访问数据库，就不再需要考虑获取连接，关闭连接了。
+管理对象：spring提供了一个容器，可以帮我们管理对象与对象之间的关系，这样一来，对象之间的耦合度降低了，方便了代码的维护。
+集成：spring可以集成其他的一些框架，比如Mybatis。
+</code></pre><p>2.如何利用Spring容器创建对象</p>
+<pre><code>Spring容器是spring框架中的一个核心模块，用于管理对象之间的关系。
+    1.利用无参构造器，启动容器，调用容器的getBean方法。
+    2.静态工厂方法，调用类的静态方法来创建对象。
+    3.实例工厂方法，调用对象的方法来创建对象。
+</code></pre><p>3.什么是IOC和DI</p>
+<pre><code>IOC：控制反转，对象之间的依赖关系交给容器来创建。
+DI：依赖注入，容器通过调用对象提供的set方法或者构造器来建立对象之间的依赖关系。IOC是目标，DI是手段。
+优点：IOC或者DI把应用的代码量降到最低，它使应用容易测试，最小的代价和最小的侵入性使松散耦合得以实现。
+</code></pre><p>4.Spring Bean的作用域和生命周期的管理方法</p>
+<pre><code>Spring beans是那些形成Spring应用的主干java对象，它们被spring容器初始化，装配和管理。这些beans通过容器中配置的数据创建。
+Srping的作用域：默认情况下，针对一个bean的配置，spring容器只会创建一个实例(既作用域为单例的singleton)，可以设置scope属性值为prototype，此时，会创建多个实例。
+Spring容器从XML文件中读取bean的定义，并实例化bean；spring根据bean定义填充所有的属性。
+Spring容器的生命周期：初始化方法通过init-method属性指定，销毁方法通过destroy-method属性来指定，也有相对应的注解：@PostConstruct和@PreDestroy，这两个注解来至javax.annotation包，使用之前要导入包。
+注：只有作用域为单例的bean销毁方法才会执行。
+</code></pre><p>5.什么是SpringMVC模式与SpringMVC的五大组件及执行原理</p>
+<pre><code>MVC模式是常见的用户界面设计模式，Spring Web MVC是Spring提供的Web界面MVC组件，利用这个组件可以简化WEB界面的开发。
+SpringMVC组件：DispatcherServlet(前端控制器)(controller)，HandlerMapping，Controller(处理器)(Model)，ModelAndView，ViewResolver(视图解析器)。
+    1.DispatcherServlet收到请求后, 依据HandlerMapping的配置, 调用相应的Controller来处理。
+    2.Controller将处理结果封装到ModelAndView对象, 然后将该对象返回给DispatcherServlet来处理。注：ModelAndView对象包含有两部分数据, 一是处理结果, 另外还包含有视图名(就是一个字符串, 比如&quot;hello&quot;)。
+    3.DispatcherServlet依据ViewResolver的解析, 调用相应的视图对象(比如jsp)来生成相应的页面。
+</code></pre><p>6.从控制器传输数据到JSP的方式</p>
+<pre><code>利用ModelAndView传输数据：如果需要将控制器中的传输到JSP页面，只需要将控制器方法的返回值设置成ModelAndView即可。其中，方法中的model代表发送到JSP界面的数据，view表示使用哪个JSP作为显示界面。
+利用HttpServletResuest传输数据：可以在控制器方法参数上注入HttpServletResuest对象，再利用这个对象的setAttribute方法将数据共享到JSP。
+两种方式各有好处：
+    1.HttpServletResuest方式：紧耦合，控制器方法紧紧绑定了Servlet API。紧耦合的时候，只能在Web容器中进行测试！但是可以调用Servlet底层的API。
+    2.返回ModelAndView方式：松耦合，控制器与Servlet API无关，可以脱离Web容器单独测试，可以方便的实现与平台无关的测试。
+控制器向浏览器发送数据可以利用ModelMap传递数据：
+只需要在控制器方法上添加ModelMap参数就可以简洁的向用户界面传递数据。
+</code></pre><p>7.从浏览器向控制器传送数据的三种方式</p>
+<pre><code>Spring MVC Web请求提交数据到控制器有下面几种方式：
+    1.使用HttpServletRequest获取：在控制器方法上使用HttpServletRequest作为参数，在运行期间Spring MVC自动参数注入HttpServletRequest，在request上直接使用getParamter方法获取参数值。缺点：数据的编码，数据类型都需要手工处理，Servlet与控制器紧耦合，不方便独立测试。优点：可以直接访问Servlet底层API，可以获取通讯的底层详细信息，如读取请求头信息。
+    2.使用@RequestParam注解：使用控制器参数接受表单数据，控制器方法参数名与表单中输入框name属性一直，SpringMVC就自动将表单数据解码并且转换数据类型然后注入到变量中。
+    3.使用自动机制封装成Bean对象：Spring提供值对象方式传递表单参数，值对象用于封装用户名和密码。
+</code></pre><p>8.SpringMVC处理异常的两种方式</p>
+<pre><code>软件的底层出现的异常抛到表现层就必须处理，Spring提供了三种处理异常的方式。
+    1.使用SpringMVC提供的简单异常处理器SimpleMappingExceptionResolver：添加异常处理界面；添加异常处理器配置，配置异常类型与错误界面的对应关系；在控制器中抛出异常时候，就转发到异常处理界面。
+    2.注解异常处理@ExceptionHandler：SpringMVC提供了在控制器内部处理异常的注解@ExceptionHandler，可以在控制器内部处理异常。
+</code></pre><p>9.Spring与Mybatis的整合</p>
+<pre><code>Mybatis：Mybatis是开源的支持普通SQL查询，存储过程和高级映射的优秀持久层框架，封装了几乎所有的JDBC代码和参数的手工配置以及结果集的检索，使用简单的XML或注解做配置和定义映射关系，可以实现POJO对象与数据库之间的映射访问。
+MyBatis提供了mybatis-spring API，这个API可以将Mybatis整合到Spring，利用Spring IOC容器管理Mybatis的组件，可以简化Mybatis的使用和管理。
+</code></pre><p>10.Mybatis的基本原理</p>
+<pre><code>1.SqlSessionFactory读取配置文件(SqlMapConfig.xml)主要包含dataSource和映射文件路径
+2.通过配置文件中的映射路径找到对应的映射文件
+3.创建预编译的statement 存放到Map里(key是sql的id)
+4.通过SqlSessionFactory创建SqlSession对象
+5.SqlSession调用相应的sql方法(第一个参数为映射文件中sql语句对应的id)
+6.依据sql语句对应的id获取对应的statement, 然后执行该对象的相应方法
+7.如果是查询, 会封装成相应的对象, 或者是对象的集合
+返回Map类型的结果
+    1.mybatis会将查询到的结果存放到Map对象里(一条记录对应一个Map对象, 其中字段名做为key, 字段值作为value)
+    2.接下来, 再将Map对象中的数据放到实体对象里面
+</code></pre><p>11.Mapper映射器是什么</p>
+<pre><code>Mapper映射器就是符合Mybatis特定要求的接口, Mybatis会依据这些接口生成相应的实现对象，这些接口符合映射文件的要求：
+    1.方法名必须与sql语句的id一样
+    2.方法的返回类型与sql语句的返回类型一致
+    3.方法的参数类型与sql语句的参数类型一致
+    4.此外, 映射文件的namespace必须等于Mapper映射器(即要写这些接口的完整的名称)
+</code></pre><p>12.表的列名与实体属性不一致的解决办法</p>
+<pre><code>默认情况下，Mybatis根据查询结果列名自动映射到结果对象的同名Bean属性，如果不一致，会有null值出现。当数据库表的列名与查询结果对象的属性不一致时候，可以采用别名映射和采用ResultMap映射。
+</code></pre><p>13.什么是扫描器对象，MapperScannerConfigurer</p>
+<pre><code>Mybatis-Spring提供了一个自动创建Mapper接口匿名子类实例的扫描器MapperScannerConfigurer，这个Bean在实例化的时候，会自动将指定包中Mapper接口创建为Bean对象。
+原理：在Spring容器初始化的时候，会自动初始化扫描器MapperScannerConfigurer对象，这是扫描器会扫描指定包中的全部接口，并且自动创建此接口的匿名实例（反射）。有了这个扫描器，就可以直接从Spring中获取Mapper接口的匿名实例，直接访问其方法操作数据库了。
+</code></pre><p>14.什么是AJAX</p>
+<pre><code>ajax(asynchronous javascript and xml)：是一种用来改善用户体验的技术, 其实质是利用浏览器提供的一个特殊的对象(XMLHttpRequest, 也可以称之为ajax对象)异步地向服务器发送请求, 服务器返回部分数据,浏览器利用这些数据对当前页面做部分更新。 整个过程, 页面无刷新, 不打断用户的操作。异步的是指这个对象在向服务器发送请求时,浏览器不会销毁当前页面, 用户仍然可以对当前页面做其它操作。
+</code></pre><p>15.AJAX的常用属性，方法，事件</p>
+<pre><code>XMLHttpRequest 对象是浏览器内嵌的API，他提供了与与服务器通讯的功能，其常用属性和方法如下：
+属性：status：服务器响应状态码：200,404,500...
+      readyState：通讯过程状态码：0 1 2 3 4 (尚未初始化-正在发送请求-
+                 请求完成-请求成功正在获取数据-数据接收成功)
+      responseText：服务器返回的文本数据。
+方法：open(请求方式，URL)准备发起对服务器的请求
+      send()向服务器发送请求
+时间：onreadystatechange:通讯状态变化事件，当代表通讯状态的readyState
+     发生变化时，执行的事件方法。
+通常将XMLHttpRequest对象简称为：XHR
+</code></pre><p>16.AJAX的开发步骤</p>
+<pre><code>1.创建ajax对象，var xhr=new XMLHttpRequest();
+2.利用open方法准备请求，xhr.open(&apos;get&apos;,&apos;check_uname.do&apos;)
+                             xhr.open(‘post’,url)
+     利用AJAX发送POST请求时，必须多一步设置HTTP请求头才能支持POST。
+     xhr.setRequestHeader(&apos;content-type&apos;,&apos; application/x-www-form-urlencoded&apos;);
+3.绑定通讯状态变化事件，当通讯状态readyState并且响应状态status为200时候表示服务器正常发送了数据，利用responseText获取服务器发回来的数据。
+    xhr.onreadystatechange = function(){};
+4.用send方法发起请求，xhr.send(null)，xhr.send(param).
+    利用AJAX技术可以在不更新页面的情况下与服务器进行交换数据，其经典使用场景：表单数据检查，自动完成等功能。
+</code></pre><p>17.什么是JSON</p>
+<pre><code>JSON(JavaScript Object Notation)：是AJAX通讯中最常用的数据格式，服务器端将数据封装为JSON字符串，客户端将JSON字符串解析为JS对象。
+JSON字符串：符合JSON语法的字符串var str=’{“id”:1,”name”:”Tom”}’.
+JS中提供了两个API方法，可以将符合JSON语法的字符串转换成JS对象。
+var obj=eval(‘(’+str+’)’);  var obj=JSON.parse(str);
+</code></pre><p>18.JSON关键点总结，利用JSON交换数据</p>
+<pre><code>JSON：用于声明JS对象的语法。
+JSON字符串：符合JSON语法的字符串。
+JSON字符串可以通过eval和JSON.parse转换为JS对象。
+利用JSON交换数据：在AJAX开发中为了将服务器端的数据发送到客户端浏览器,经常的做法是将数据序列为JSON字符串,然后将JSON字符串发送到客户端浏览器, 最后客户端浏览器在收到数据时候转换为JS对象,并且读取其信息
+利用JSON API转换Java对象到JSON字符串更加简洁方便，常用的API有Jackson-databind和json-lib ，导入JSON API。
+</code></pre><p>19.JQuery对AJAX的支持，常用的两种方式</p>
+<pre><code>JQuery提供了非常简便的AJAX客户端调用支持，常用方法有：
+$.ajax({url:请求路径，type:请求方式，data:请求参数，dataType：服务器返回的数据类型，success:服务器处理正常对应的回调函数，error:服务器出错对应的回调函数，async:true(缺省)当值为false时发送同步请求})；
+$.getJSON(url,参数,callback)，$.post(url,参数,callback).
+</code></pre><p>20.什么是AOP，Aspect切面，AOP的常用用途</p>
+<pre><code>AOP：面向切面编程，是一种编程技术，允许程序模块化横向切割关注点，面向切面编程可以不改变原有软件的逻辑情况下，为软件加入扩展功能。Spring AOP的底层是基于(JDK反射的)动态代理实现的。 
+Aspect切面：Spring内嵌支持AOP，AOP的核心就是切面，它将多个类的通用行为封装成可重用的模块，该模块含有一组API提供横切功能。根据需求不同，一个应用程序可以有若干切面，在Spring AOP中，导入AspectJ包，切面通过带有@Aspect注解的类实现。
+常用用途：
+    1.性能审计
+    2.异常跟踪
+    3.事物处理
+Spring事物处理：声明式事物处理，无需编码，只需要使用注解声明事物的边界即可，AOP是非常好的编程事物的替代方案。默认情况下，Spring声明事务的方法，在相互调用的时候，事务会自动传播整合为一个事务过程。
+编程步骤：
+    1.在spring-mybatis.xml文件中配置事物管理器
+    2.配置注解事物支持
+           &lt;tx:annotation-driven transaction-manager=”txManager”/&gt;
+    3.使用事物注解标注业务层：@Transactional注解将业务层方法
+            看做一个事物，如果有异常抛出，则回滚到初始状态。
+</code></pre><p>21.各种拦截编程的区别</p>
+<pre><code>Spring MVC拦截器、Servlet Filter过滤器、Spring AOP都是横截面编程
+Servlet Filter过滤器：可以拦截任何的WEB URL请求（*.jsp,*.js,*.css,*.html），如登陆以后才能看到图片(防盗链)。    
+Spring MVC拦截器：拦截Spring MVC的WEB URL请求。
+Spring AOP：拦截对业务层或数据层的请求。
+</code></pre><p>22.两种Spring容器的初始化方法</p>
+<pre><code>1.DispatcherServlet：只使用Spring MVC，则DispatcherServlet即可。
+2.ContextLoaderListener：在过滤器的init方法中使用监听器初始化Spring容器，可以替代DispatcherServlet初始化功能，该方法必须与ContextLoaderListener配合才能正常获取Spring容器对象ctx，在web.xml配置Listener.
+public void init(FilterConfig cfg) throws ServletException {
+WebApplicationContext ctx=
+WebApplicationContextUtils.getWebApplicationContext(cfg.getServletContext());}
+</code></pre><p>23.两种Spring Bean对象的获取方式</p>
+<pre><code>1.注入Bean：当前Bean被Spring管理的情况下，可以使用注入。
+2.getBean：当前对象不被Spring管理，则需要getBean。
+</code></pre><p>24.简述什么是反射，反射机制提供的功能</p>
+<pre><code>对于任意一个类，我们可以动态获取它的所有属性和方法，对于任意一个对象，我们都可以动态的调用它的任意一个属性和方法，对于这种动态获取类的信息以及动态调用对象属性和方法的功能称为反射机制。
+提供的功能：
+1运行时判断任意对象的所属类
+2运行时构造任意类的对象
+3运行时判断和调用对象的成员变量和方法
+4生成动态代理
+</code></pre></the>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="">Spring-Mybatis-AJAX</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Xiantai Shi 的个人博客">Xiantai Shi</a></p>
+        <p><span>发布时间:</span>2018年08月30日 - 22时35分</p>
+        <p><span>最后更新:</span>2018年09月29日 - 13时07分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="" title="Spring-Mybatis-AJAX">https://nd.ataisxt.cn/2018/08/30/面试题Spring-Mybatis-AJAX/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://nd.ataisxt.cn/2018/08/30/面试题Spring-Mybatis-AJAX/　　作者: Xiantai Shi" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="../前端CSS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          WEB前端CSS
+        
+      </div>
+    </a>
+  
+  
+    <a  href="../面试题常见的几种设计模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常见的几种设计模式</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="../前端CSS/" title="上一篇: WEB前端CSS">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="../面试题常见的几种设计模式/" title="下一篇: 常见的几种设计模式">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="../../../09/21/正则表达式/">用户名、密码等15个常用的js正则表达式</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Web基础-JavaScript-JQuery/">Web基础，JavaScript，JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../前端JQuery/">WEB前端JQuery</a></li><li class="post-list-item"><a class="post-list-link" href="../前面Web框架/">前端WEB框架</a></li><li class="post-list-item"><a class="post-list-link" href="../前端JavaScript/">WEB前端JavaScript</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题API-SE/">API,SE</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题Servlet-JSP/">Servlet-JSP</a></li><li class="post-list-item"><a class="post-list-link" href="../前端CSS/">WEB前端CSS</a></li><li class="post-list-item"><a class="post-list-link" href="">Spring-Mybatis-AJAX</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题常见的几种设计模式/">常见的几种设计模式</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题数据库和JDBC/">数据库和JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="../面试题线程/">线程</a></li><li class="post-list-item"><a class="post-list-link" href="../前端HTML/">WEB前端HTML</a></li><li class="post-list-item"><a class="post-list-link" href="../../../07/23/Java面向对象雷霆战机/">Java面向对象-雷霆战机</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/环境搭建连接详细版/">环境搭建(附链接)</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题Html/">Html部分</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题Spring框架/">Spring框架部分</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题OOP/">OOP</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/环境搭建centos7.4/">环境搭建Centos7.4</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/Java基础Basic/">Java基础</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/Java面向对象/">Java面向对象</a></li><li class="post-list-item"><a class="post-list-link" href="../../../06/23/面试题Java基础/">Java面试资料</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/HTTP状态码说明/">HTTP状态码说明</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/软件Intellij IDEA 快捷键整理/">IDEA快捷键</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/数据库JDBC/">JDBC</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/Linux查看系统配置常用命令/">Linux查看系统配置常用命令</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/excel/">Excel</a></li><li class="post-list-item"><a class="post-list-link" href="../../../../2017/10/30/软件WebStrom快捷键/">WebStrom快捷键</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2018 Xiantai Shi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="../../../../js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
